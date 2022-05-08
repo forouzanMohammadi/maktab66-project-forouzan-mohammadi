@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from 'redux/store'
 import { RoutesObj } from 'Routes/RoutesObj'
@@ -7,6 +7,7 @@ import { RoutesObj } from 'Routes/RoutesObj'
 function App() {
   return (
     <Provider store={store}>
+    <Router>
       <Routes>
         {RoutesObj.map((route) => {
           return (
@@ -18,6 +19,7 @@ function App() {
           )
         })}
       </Routes>
+    </Router>
     </Provider>
   )
 }

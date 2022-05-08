@@ -1,9 +1,9 @@
 import React from 'react'
-import FirstLayout from 'layouts/FirstLayout'
+import UserLayout from 'layouts/UserLayout'
 
 function Home(props) {
   return (
     <div>Home</div>
   )
 }
-export default FirstLayout(Home)
+export default UserLayout(Home)
