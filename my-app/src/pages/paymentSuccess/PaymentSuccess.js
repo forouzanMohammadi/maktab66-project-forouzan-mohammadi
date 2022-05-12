@@ -1,7 +1,9 @@
 import React from 'react'
+import UserLayout from 'layouts/UserLayout'
 
-export default function PaymentSuccess() {
+function PaymentSuccess() {
   return (
     <div>PaymentSuccess</div>
   )
 }
+export default UserLayout(PaymentSuccess)

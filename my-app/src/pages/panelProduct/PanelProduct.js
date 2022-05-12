@@ -1,7 +1,9 @@
 import React from 'react'
+import UserLayout from 'layouts/UserLayout'
 
-export default function PanelProduct() {
+function PanelProduct() {
   return (
     <div>PanelProduct</div>
   )
 }
+export default UserLayout(PanelProduct)
