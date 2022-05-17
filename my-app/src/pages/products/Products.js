@@ -1,7 +1,10 @@
 import React from 'react'
+import UserLayout from 'layouts/UserLayout'
 
-export default function Products() {
+function Products() {
   return (
     <div>Products</div>
   )
 }
+
+export default UserLayout(Products)

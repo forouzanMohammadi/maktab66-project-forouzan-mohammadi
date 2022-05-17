@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
-import { AdminReq } from 'service/AdminReq'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AdminApis } from 'service/AdminApis';
 
-function PanelLogin() {
-  const [user,setUserState] =   useState({})
-  console.log(user)
-
+function Login() {
+  const [user,setUserState] =   useState({});
+  const navigate = useNavigate();
   const inputChangeHandler=(e)=>{
     const _user={...user,[e.target.name]: e.target.value}
-    setUserState(_user)
+    setUserState(_user);
 }
 
   const handleSubmit =async (e) => {
     e.preventDefault()
-    let response =await AdminReq.login(user)
-    localStorage.setItem('token', response.data.token)
+    localStorage.removeItem('token');
+    let response =await AdminApis.login(user);
+    localStorage.setItem('token', response.data.token);
     console.log(response.data.token);
-    <Navigate to={'/panelProduct'}/>
+    navigate('/adminPanel');
   }
 
   return (
@@ -62,4 +62,4 @@ function PanelLogin() {
     </div>
   )
 }
-export default PanelLogin
+export default Login;

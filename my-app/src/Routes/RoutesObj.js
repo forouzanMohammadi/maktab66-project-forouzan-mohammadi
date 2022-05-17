@@ -1,14 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from 'pages/home/Home'
-import Basket from 'pages/basket/Basket'
-import Checkout from 'pages/checkout/Checkout'
-import PanelLogin from 'pages/panelLogin/PanelLogin'
-import PanelProduct from 'pages/panelProduct/PanelProduct'
-import Payment from 'pages/payment/Payment'
-import PaymentFail from 'pages/paymentFail/PaymentFail'
-import PaymentSuccess from 'pages/paymentSuccess/PaymentSuccess'
-import Products from 'pages/products/Products'
-import Product from 'pages/product/Product'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from 'pages/home/Home';
+import Basket from 'pages/basket/Basket';
+import Checkout from 'pages/checkout/Checkout';
+import Login from 'pages/login/Login';
+import AdminPanel from 'pages/adminPanel/AdminPanel';
+import Payment from 'pages/payment/Payment';
+import PaymentFail from 'pages/paymentFail/PaymentFail';
+import PaymentSuccess from 'pages/paymentSuccess/PaymentSuccess';
+import Products from 'pages/products/Products';
+import Product from 'pages/product/Product';
 
 const RoutesObj = [
   {
@@ -33,18 +33,18 @@ const RoutesObj = [
     element: <Checkout />,
   },
   {
-    pathname: '/panelLogin',
-    name: 'Panel Login',
+    pathname: '/login',
+    name: 'login',
     isPrivate: true,
-    id: 'panelLogin',
-    element: <PanelLogin />,
+    id: 'login',
+    element: <Login />,
   },
   {
-    pathname: '/panelProduct',
-    name: 'Panel Product',
+    pathname: '/adminPanel',
+    name: 'admin panel',
     isPrivate: false,
-    id: 'panelProduct',
-    element: <PanelProduct />,
+    id: 'adminPanel',
+    element: <AdminPanel />,
   },
   {
     pathname: '/payment',
@@ -98,4 +98,4 @@ export default function RouteApp() {
       </Routes>
     </Router>
   )
-}
+};

@@ -1,9 +1,9 @@
 import React from 'react'
 import UserLayout from 'layouts/UserLayout'
 
-function Basket() {
+function AdminPanel() {
   return (
-    <div>Basket</div>
+    <div>AdminPanel</div>
   )
 }
-export default UserLayout(Basket)
+export default UserLayout(AdminPanel)

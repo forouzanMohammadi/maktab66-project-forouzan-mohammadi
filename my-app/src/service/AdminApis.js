@@ -1,10 +1,10 @@
 import HttpService from "./HttpService";
 
-const AdminReq = new HttpService("/")
+const AdminApis = new HttpService("/")
 
 
-AdminReq.login = function (body){
+AdminApis.login = function (body){
     return this.instance.post(`${this.baseUrl}auth/login`,body)
 }
 
-export {AdminReq}
+export {AdminApis}

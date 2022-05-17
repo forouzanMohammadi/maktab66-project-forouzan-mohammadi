@@ -3,7 +3,7 @@ import UserLayout from 'layouts/UserLayout'
 
 function Home(props) {
   return (
-    <div>Home</div>
+    <div></div>
   )
 }
 export default UserLayout(Home)
