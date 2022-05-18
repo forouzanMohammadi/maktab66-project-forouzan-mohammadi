@@ -11,7 +11,6 @@ import {
   useTheme,
   useMediaQuery,
   Link,
-  Divider,
 } from '@mui/material'
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined'
@@ -120,7 +119,6 @@ function Navbar() {
             </Grid>
           )}
         </Toolbar>
-        <Divider variant="middle" />
       </AppbarStyle>
     </ThemeProvider>
   )
