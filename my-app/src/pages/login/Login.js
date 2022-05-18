@@ -68,7 +68,7 @@ const Login = () => {
             className={errors.password && touched.password ? "input-error" : ""}
           />
            {errors.password && touched.password && <p className='error'>{errors.password}</p>}
-          <button type="submit">ورود</button>
+          <button className='button' type="submit">ورود</button>
         </form>
         <Link className='link-form' to={'/'}>صفحه اصلی</Link>
       </div>
