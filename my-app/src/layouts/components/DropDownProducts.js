@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     Tab,
-    Tabs,
     Menu,
     MenuItem,
     Link,

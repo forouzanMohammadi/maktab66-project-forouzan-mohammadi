@@ -4,7 +4,6 @@ import DrawerMenu from 'layouts/components/DrawerMenu'
 import DropDownAdmin from 'layouts/components/DropDownAdmin'
 import {
   Grid,
-  Tabs,
   Tab,
   Toolbar,
   InputBase,
