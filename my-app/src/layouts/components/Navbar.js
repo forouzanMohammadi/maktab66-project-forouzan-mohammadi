@@ -11,7 +11,7 @@ import {
   useTheme,
   useMediaQuery,
   Link,
-  Divider,
+
 } from '@mui/material'
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined'
@@ -36,14 +36,14 @@ const myTheme = createTheme({
 })
 
 const AppbarStyle = styled('div')(() => ({
-  position: 'fixed',
+  position: 'static',
   top: '0',
   width: '100%',
   zIndex: '1000',
   direction: 'rtl',
   boxShadow: 'none',
-  background: 'rgba(255, 255, 255, 0.24)',
-  backdropFilter: 'blur(7.5px)',
+  background: 'rgba(208, 170, 208, 0.55)',
+  backdropFilter: 'blur(16px) saturate(180%)',
   borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
 }))
 
@@ -96,7 +96,7 @@ function Navbar() {
               <Grid item xs={2}>
                 <img className="logo" src={image} alt="logo" />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4} color='black'>
                 <Grid sx={{ pt: 1 }}>
                   <Tab label="صفحه اصلی" component={Link} to="/" />
                   <DropDownProducts />
@@ -120,7 +120,7 @@ function Navbar() {
             </Grid>
           )}
         </Toolbar>
-        <Divider variant="middle" />
+        {/* <Divider variant="middle" /> */}
       </AppbarStyle>
     </ThemeProvider>
   )

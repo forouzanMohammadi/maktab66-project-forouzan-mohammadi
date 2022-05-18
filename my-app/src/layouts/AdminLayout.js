@@ -1,11 +1,13 @@
-import Header from 'components/Header'
-import Footer from 'components/Footer'
+
+import Footer from './components/Footer';
+import Sidebar from './components/Sidebar';
 
 const AdminLayout = (Component) => {
   return (props) => (
     <div>
-      <Header />
+
       <Component {...props} />
+      <Sidebar/>
       <Footer />
     </div>
   );

@@ -3,18 +3,18 @@
   src: url('/assets/fonts/iranSans/Sansa4fran3.eot') format('eot');
 }
 .form-body {
-  background-image: url('/assets/images/thecover1.jpg');
+  background-image: url('/assets/images/cover3.jpg');
   background-position: right;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   width: 100%;
   height: 100vh;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 h1{
-    color:rgba(0, 0, 0, 0.72);
+    color:rgba(0, 0, 0, 0.893);
     transition-duration: 1s;
     transition-timing-function: ease-in-put;
 
@@ -38,10 +38,10 @@ input {
   display: block;
   appearance: none;
   outline: 0;
-  border: 1px solid white;
+  border: 2px solid white;
   background-color: rgba(255, 255, 255, 0.298);
   width: 250px;
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 10px 15px;
   margin: 0 auto 10px auto;
   display: block;
@@ -68,7 +68,7 @@ button {
   border: 0;
   padding: 10px 15px;
   color: #000;
-  border-radius: 3px;
+  border-radius: 4px;
   width: 250px;
   cursor: pointer;
   font-size: 18px;
@@ -79,3 +79,16 @@ button {
     background-color: rgba(245, 247, 249, 0.867);
   }
 }
+ input.input-error,select.input-error{
+   border-color: #ff6d6d;
+ }
+ .error{
+   color: #fe4141;
+   font-size: 14px;
+   font-weight: bold;
+ }
+ .link-form{
+   color: rgb(6, 64, 74);
+   text-decoration: none;
+   font-weight: bold;
+ }

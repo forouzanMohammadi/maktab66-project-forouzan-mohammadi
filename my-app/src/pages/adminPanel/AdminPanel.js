@@ -1,9 +1,9 @@
 import React from 'react'
-import UserLayout from 'layouts/UserLayout'
+import AdminLayout from 'layouts/AdminLayout'
 
 function AdminPanel() {
   return (
     <div>AdminPanel</div>
   )
 }
-export default UserLayout(AdminPanel)
+export default AdminLayout(AdminPanel)
