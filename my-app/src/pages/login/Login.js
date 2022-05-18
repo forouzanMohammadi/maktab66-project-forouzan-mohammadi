@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { AdminApis } from 'service/AdminApis';
-import {basicSchema} from './yupvalidation/basicSchema'
+import {basicSchema} from '../login/yupvalidation/basicSchema'
 import {Link} from 'react-router-dom'
 
 
@@ -39,7 +39,6 @@ const Login = () => {
       <div className="container">
       <h1>ورود به پنل مدیریت</h1>
         <form className="form" onSubmit={handleSubmit}>
-          {/* <label htmlFor="username">نام کاربری</label> */}
           <input
             placeholder='نام کاربری'
             id="username"
