@@ -45,7 +45,7 @@ function DrawerMenu() {
     },
     [theme.breakpoints.down('md')]: {
       marginRight: theme.spacing(15),
-      width: 'auto',
+      width: '100%',
     },
   }));
   const SearchSm = styled('div')(({ theme }) => ({
@@ -53,7 +53,7 @@ function DrawerMenu() {
     zIndex: '100',
     alignItems: 'center',
     marginRight: theme.spacing(4),
-    width: 'auto',
+    width: '100%',
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({

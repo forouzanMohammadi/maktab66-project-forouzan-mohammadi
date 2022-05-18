@@ -4,7 +4,6 @@ import DrawerMenu from 'layouts/components/DrawerMenu'
 import DropDownAdmin from 'layouts/components/DropDownAdmin'
 import {
   Grid,
-  Tabs,
   Tab,
   Toolbar,
   InputBase,
@@ -43,8 +42,8 @@ const AppbarStyle = styled('div')(() => ({
   zIndex: '1000',
   direction: 'rtl',
   boxShadow: 'none',
-  background: 'rgba(255, 255, 255, 0.24)',
-  backdropFilter: 'blur(7.5px)',
+  background: 'rgba(208, 170, 208, 0.55)',
+  backdropFilter: 'blur(16px) saturate(180%)',
   borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
 }))
 
