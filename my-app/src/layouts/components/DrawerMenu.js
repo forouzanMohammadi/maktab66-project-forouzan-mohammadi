@@ -14,10 +14,10 @@ import {
   InputBase,
   useTheme,
   useMediaQuery,
-  Grid,
   Link,
   Collapse,
   Divider,
+  Grid,
 } from '@mui/material';
 import image from 'assets/images/theLogo.png';
 
@@ -45,7 +45,7 @@ function DrawerMenu() {
     },
     [theme.breakpoints.down('md')]: {
       marginRight: theme.spacing(15),
-      width: '100%',
+      width: 'auto',
     },
   }));
   const SearchSm = styled('div')(({ theme }) => ({
@@ -53,7 +53,7 @@ function DrawerMenu() {
     zIndex: '100',
     alignItems: 'center',
     marginRight: theme.spacing(4),
-    width: '100%',
+    width: 'auto',
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -96,28 +96,28 @@ function DrawerMenu() {
       </ListItemButton>
       <Divider variant="middle" />
       <ListItemButton onClick={handleClick}>
-        <Link underline='none' color="black" >
+        <Grid underline='none' color="black" href='/' >
           <ListItemText primary="دسته‌بندی محصولات"/>
-        </Link>
+        </Grid>
         {isOpen ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Divider variant="middle" />
       <Collapse in={isOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton >
-            <Link underline='none' color="black" >
+            <Link underline='none' color="primary" >
               <ListItemText primary="کلاه بچه‌گانه"/>
             </Link>
           </ListItemButton>
           <Divider variant="middle" />
           <ListItemButton >
-            <Link underline='none' color="black" >
+            <Link underline='none' color="primary" >
               <ListItemText primary="کلاه زنانه" />
             </Link>
           </ListItemButton>
           <Divider variant="middle" />
           <ListItemButton >
-            <Link underline='none' color="black">
+            <Link underline='none' color="primary">
               <ListItemText primary="کلاه مردانه" />
             </Link>
           </ListItemButton>
@@ -150,9 +150,7 @@ function DrawerMenu() {
         </Search>
       )}
       <IconButton sx={{ marginRight: 'auto' }} onClick={() => setOpen(!open)}>
-        <Grid>
         <LocalGroceryStoreOutlinedIcon />
-        </Grid>
         <MenuIcon />
       </IconButton>
     </>
