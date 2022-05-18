@@ -1,7 +1,7 @@
-import React from 'react'
-import DropDownProducts from 'layouts/components/DropDownProducts'
-import DrawerMenu from 'layouts/components/DrawerMenu'
-import DropDownAdmin from 'layouts/components/DropDownAdmin'
+import React from 'react';
+import DropDownProducts from 'layouts/components/DropDownProducts';
+import DrawerMenu from 'layouts/components/DrawerMenu';
+import DropDownAdmin from 'layouts/components/DropDownAdmin';
 import {
   Grid,
   Tab,
@@ -11,13 +11,12 @@ import {
   useTheme,
   useMediaQuery,
   Link,
-
-} from '@mui/material'
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
-import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined'
-import image from 'assets/images/theLogo.png'
-import iranSans from 'assets/fonts/iranSans/Sansa4fran3.woff'
-import SearchIcon from '@mui/icons-material/Search'
+} from '@mui/material';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
+import image from 'assets/images/theLogo.png';
+import iranSans from 'assets/fonts/iranSans/Sansa4fran3.woff';
+import SearchIcon from '@mui/icons-material/Search';
 
 const myTheme = createTheme({
   typography: {
@@ -36,7 +35,7 @@ const myTheme = createTheme({
 })
 
 const AppbarStyle = styled('div')(() => ({
-  position: 'static',
+  position: 'fixed',
   top: '0',
   width: '100%',
   zIndex: '1000',
