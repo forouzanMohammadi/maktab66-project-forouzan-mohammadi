@@ -6,12 +6,12 @@ class HttpService {
     constructor(entity) {
         this.instance = axios.create();
         this.entity = entity;
-        this.baseUrl = `http://localhost:3002${this.entity}`
+        this.baseUrl =`http://localhost:3002${this.entity}`
         this.instance.interceptors.request.use((config) => {
             //TODO: Add request interceptor here (onFulfilled)
             const token = localStorage.getItem("token")
             if(token){
-                config.headers['token'] = token;
+                config.headers['Authorization'] = token;
             }
             return config
         }, (error) => {

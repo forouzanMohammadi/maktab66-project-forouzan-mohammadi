@@ -9,6 +9,8 @@ import PaymentFail from 'pages/paymentFail/PaymentFail';
 import PaymentSuccess from 'pages/paymentSuccess/PaymentSuccess';
 import Products from 'pages/products/Products';
 import Product from 'pages/product/Product';
+import Orders from 'pages/orders/Orders';
+import Quantity from 'pages/quantity/Quantity';
 
 const RoutesObj = [
   {
@@ -80,6 +82,20 @@ const RoutesObj = [
     isPrivate: false,
     id: 'Product',
     element: <Product />,
+  },
+  {
+    pathname: '/quantity',
+    name: 'quantity',
+    isPrivate: false,
+    id: 'quantity',
+    element: <Quantity />,
+  },
+  {
+    pathname: '/orders',
+    name: 'orders',
+    isPrivate: false,
+    id: 'orders',
+    element: <Orders />,
   },
 ]
 export default function RouteApp() {

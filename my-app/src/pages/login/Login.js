@@ -24,7 +24,7 @@ const Login = () => {
     },
     validationSchema: basicSchema,
     
-    onSubmit: async (values) => {
+    onSubmit: async (user) => {
       localStorage.removeItem('token')
       let response = await AdminApis.login(user)
       localStorage.setItem('token', response.data.token)
