@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import MenuIcon from '@mui/icons-material/Menu'
-import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined'
-import SearchIcon from '@mui/icons-material/Search'
-import ExpandLess from '@mui/icons-material/ExpandLess'
-import ExpandMore from '@mui/icons-material/ExpandMore'
-import { styled } from '@mui/material/styles'
+import React, { useState } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
+import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
+import SearchIcon from '@mui/icons-material/Search';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import { styled } from '@mui/material/styles';
 import {
   Drawer,
   IconButton,
@@ -18,18 +18,21 @@ import {
   Collapse,
   Divider,
   Grid,
-} from '@mui/material'
-import image from 'assets/images/thisLogo-removebg-preview.png'
+} from '@mui/material';
+import image from 'assets/images/thisLogo-removebg-preview.png';
+import BabyCatDrawer from './BabyCatDrawer';
+import WomanCatDrawer from './WomanCatDrawer';
+import ManCatDrawer from './ManCatDrawer';
 
 function DrawerMenu() {
-  const [open, setOpen] = useState(false)
-  const theme = useTheme()
-  const isMatch = useMediaQuery(theme.breakpoints.down('sm'))
-  const [isOpen, isSetOpen] = React.useState(false)
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down('sm'));
+  const [isOpen, isSetOpen] = React.useState(false);
 
   const handleClick = () => {
     isSetOpen(!isOpen)
-  }
+  };
 
   const Search = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -42,13 +45,14 @@ function DrawerMenu() {
       marginRight: theme.spacing(15),
       width: 'auto',
     },
-  }))
+  }));
+
   const SearchSm = styled('div')(({ theme }) => ({
     color: '#fff',
     display: 'flex',
     zIndex: '100',
     alignItems: 'center',
-  }))
+  }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     '.MuiInputBase-input': {
@@ -60,7 +64,7 @@ function DrawerMenu() {
         width: '20ch',
       },
     },
-  }))
+  }));
 
   return (
     <>
@@ -103,24 +107,9 @@ function DrawerMenu() {
           <Divider variant="middle" />
           <Collapse in={isOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton>
-                <Link underline="none" color="primary" href='/babyProducts'>
-                  <ListItemText primary="کلاه بچه‌گانه" />
-                </Link>
-              </ListItemButton>
-              <Divider variant="middle" />
-              <ListItemButton>
-                <Link underline="none" color="primary" href='/womanProducts'>
-                  <ListItemText primary="کلاه زنانه" />
-                </Link>
-              </ListItemButton>
-              <Divider variant="middle" />
-              <ListItemButton>
-                <Link underline="none" color="primary" href='/manProducts'>
-                  <ListItemText primary="کلاه مردانه" />
-                </Link>
-              </ListItemButton>
-              <Divider variant="middle" />
+            <BabyCatDrawer/>
+            <WomanCatDrawer/>
+             <ManCatDrawer/>
             </List>
           </Collapse>
           <ListItemButton>
@@ -161,6 +150,6 @@ function DrawerMenu() {
       </IconButton>
     </>
   )
-}
+};
 
-export default DrawerMenu
+export default DrawerMenu;

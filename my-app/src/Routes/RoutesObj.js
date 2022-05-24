@@ -10,7 +10,7 @@ import PaymentSuccess from 'pages/paymentSuccess/PaymentSuccess';
 import ManProducts from 'pages/products/ManProducts';
 import BabyProducts from 'pages/products/BabyProducts';
 import WomanProducts from 'pages/products/WomanProducts';
-import Product from 'pages/product/Product';
+import DetailProduct from 'pages/detailProduct/DetailProduct';
 import Orders from 'pages/orders/Orders';
 import Quantity from 'pages/quantity/Quantity';
 
@@ -93,11 +93,11 @@ const RoutesObj = [
     element: <ManProducts />,
   },
   {
-    pathname: '/product',
-    name: 'Product',
+    pathname: '/detailProduct',
+    name: 'Detail Product',
     isPrivate: false,
-    id: 'product',
-    element: <Product />,
+    id: 'detailProduct',
+    element: <DetailProduct />,
   },
   {
     pathname: '/quantity',

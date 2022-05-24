@@ -1,7 +1,7 @@
 import React from 'react';
-import DropDownProducts from 'layouts/components/DropDownProducts';
-import DrawerMenu from 'layouts/components/DrawerMenu';
-import DropDownAdmin from 'layouts/components/DropDownAdmin';
+import DropDownProducts from 'layouts/components/navbar/DropDownProducts';
+import DrawerMenu from 'layouts/components/navbar/DrawerMenu';
+import DropDownAdmin from 'layouts/components/navbar/DropDownAdmin';
 import {
   Grid,
   Toolbar,

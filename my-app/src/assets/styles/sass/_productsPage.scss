@@ -62,24 +62,16 @@
 }
 
 @media only screen and (max-width: 425px) {
-    // .categoris-container{
-    //     width: 80vw !important;
-    // //  margin-left:50px !important;
-    // }
-    // .products-pagination{
-    //   button{
-    //       min-width: 24px !important;
-    //   }
-    // }
+
     .sidebar {
         display: none;
     }
   .card-home {
-    width: 200px !important;
+    width: 250px !important;
     .MuiCardMedia-img {
-      padding: 30px !important;
-      height: 200px !important;
-      width: 200px !important;
+      padding: 10px !important;
+      height: 220px !important;
+      width: 250px !important;
     }
   }
 }
@@ -94,7 +86,7 @@
   .card-home {
     width: 250px;
     .MuiCardMedia-img {
-      padding: 30px;
+      padding: 10px;
       height: 250px;
       width: 250px;
     }
@@ -110,7 +102,7 @@
   .card-home {
     width: 250px;
     .MuiCardMedia-img {
-      padding: 30px;
+      padding: 20px;
       height: 250px;
       width: 250px;
     }
@@ -123,7 +115,7 @@
   .card-home {
     width: 220px !important;
     .MuiCardMedia-img {
-      padding: 30px !important;
+      padding: 20px !important;
       height: 200px !important;
       width: 210px !important;
     }
