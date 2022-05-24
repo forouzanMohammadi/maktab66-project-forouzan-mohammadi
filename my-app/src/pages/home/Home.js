@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { AdminApis } from 'service/AdminApis';
-import UserLayout from 'layouts/UserLayout';
+import React, { useEffect, useState } from 'react'
+import { AdminApis } from 'service/AdminApis'
+import UserLayout from 'layouts/UserLayout'
 import {
   Grid,
   Link,
@@ -9,9 +9,9 @@ import {
   CardContent,
   Typography,
   CardMedia,
-} from '@mui/material';
-import Slider from './slider/Slider';
-import LinkCat from './LinkCat';
+} from '@mui/material'
+import Slider from './slider/Slider'
+import LinkCat from './LinkCat'
 
 function Home(props) {
   const [babiesCat, setBabiesCat] = useState([])
@@ -35,7 +35,7 @@ function Home(props) {
   return (
     <>
       <Slider />
-      <LinkCat/>
+      <LinkCat />
       <Grid container className="category-container" sx={{ mt: 10 }}>
         <Grid item xs={12}>
           <Typography className="suggestCat">
@@ -43,7 +43,14 @@ function Home(props) {
           </Typography>
         </Grid>
         {babiesCat.map((product) => (
-          <Grid item sm={6} md={4} lg={4} xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid
+            item
+            sm={6}
+            md={4}
+            lg={4}
+            xs={12}
+            sx={{ display: 'flex', justifyContent: 'center' }}
+          >
             <Card className="card-home">
               <CardActionArea>
                 <CardMedia
@@ -56,7 +63,9 @@ function Home(props) {
                     {product.name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    <Link variant="body1" underline='non' pl={5}>مشاهده</Link>
+                    <Link variant="body1" underline="non" pl={5} className='visit'>
+                      مشاهده
+                    </Link>
                     {product.price + 'تومان'}
                   </Typography>
                 </CardContent>
@@ -72,7 +81,14 @@ function Home(props) {
           </Typography>
         </Grid>
         {womenCat.map((hat) => (
-          <Grid item sm={6} md={4} lg={4} xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid
+            item
+            sm={6}
+            md={4}
+            lg={4}
+            xs={12}
+            sx={{ display: 'flex', justifyContent: 'center' }}
+          >
             <Card className="card-home">
               <CardActionArea>
                 <CardMedia
@@ -85,6 +101,9 @@ function Home(props) {
                     {hat.name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
+                    <Link variant="body1" underline="non" pl={5} className='visit'>
+                      مشاهده
+                    </Link>
                     {hat.price + 'تومان'}
                   </Typography>
                 </CardContent>
@@ -95,10 +114,19 @@ function Home(props) {
       </Grid>
       <Grid container className="category-container" sx={{ mt: 10 }}>
         <Grid item xs={12}>
-          <Typography className="suggestCat">پیشنهاد ویژه کلاه مردانه</Typography>
+          <Typography className="suggestCat">
+            پیشنهاد ویژه کلاه مردانه
+          </Typography>
         </Grid>
         {menCat.map((hats) => (
-          <Grid item sm={6} md={4} lg={4} xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid
+            item
+            sm={6}
+            md={4}
+            lg={4}
+            xs={12}
+            sx={{ display: 'flex', justifyContent: 'center' }}
+          >
             <Card className="card-home">
               <CardActionArea>
                 <CardMedia
@@ -111,6 +139,9 @@ function Home(props) {
                     {hats.name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
+                    <Link variant="body1" underline="non" pl={5} className='visit'>
+                      مشاهده
+                    </Link>
                     {hats.price + 'تومان'}
                   </Typography>
                 </CardContent>

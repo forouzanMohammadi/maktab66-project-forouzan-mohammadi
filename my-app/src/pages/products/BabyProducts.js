@@ -69,7 +69,7 @@ function BabyProducts() {
                         {product.name}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        <Link variant="body1" underline="non" pl={5}>
+                        <Link variant="body1" underline="non" pl={5} className='visit'>
                           مشاهده
                         </Link>
                         {product.price + 'تومان'}
