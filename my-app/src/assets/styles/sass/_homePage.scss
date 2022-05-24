@@ -10,7 +10,9 @@
   .suggestCat{
       color:rgba(0, 0, 0, 0.759);
       font-weight: bold;
-      margin: 50px !important;
+      font-size: 22px;
+      margin: 40px !important;
+      user-select: none;
 
   }
 }
@@ -52,12 +54,13 @@
         background-color: rgb(227, 178, 238);
     }
     .linkText{
+        font-size: 18px;
         color: #000;
         text-decoration: none;
         font-weight: bold;
 
         &:hover{
-            color: rgb(67, 145, 140);
+            color: rgb(51, 123, 118);
         }
     }
 }

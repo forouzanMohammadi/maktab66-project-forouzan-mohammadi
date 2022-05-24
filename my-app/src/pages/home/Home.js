@@ -37,10 +37,10 @@ function Home(props) {
       <Slider />
       <LinkCat/>
       <Grid container className="category-container" sx={{ mt: 10 }}>
-        <Grid item xs={12} sx={{ my: 5 }}>
-          <Link underline="none" className="suggestCat">
+        <Grid item xs={12}>
+          <Typography className="suggestCat">
             پیشنهاد ویژه کلاه بچه‌گانه
-          </Link>
+          </Typography>
         </Grid>
         {babiesCat.map((product) => (
           <Grid item sm={6} md={4} lg={4} xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -66,10 +66,10 @@ function Home(props) {
         ))}
       </Grid>
       <Grid container className="category-container" sx={{ mt: 10 }}>
-        <Grid item xs={12} sx={{ my: 5 }}>
-          <Link underline="none" className="suggestCat">
+        <Grid item xs={12}>
+          <Typography className="suggestCat">
             پیشنهاد ویژه کلاه زنانه
-          </Link>
+          </Typography>
         </Grid>
         {womenCat.map((hat) => (
           <Grid item sm={6} md={4} lg={4} xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -94,8 +94,8 @@ function Home(props) {
         ))}
       </Grid>
       <Grid container className="category-container" sx={{ mt: 10 }}>
-        <Grid item xs={12} sx={{ my: 5 }}>
-          <Link underline="none" className="suggestCat">پیشنهاد ویژه کلاه مردانه</Link>
+        <Grid item xs={12}>
+          <Typography className="suggestCat">پیشنهاد ویژه کلاه مردانه</Typography>
         </Grid>
         {menCat.map((hats) => (
           <Grid item sm={6} md={4} lg={4} xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
