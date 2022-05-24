@@ -14,7 +14,7 @@ function DropDownAdmin() {
 
   return (
     <>
-      <PersonOutlineIcon onClick={handleClick} sx={{ fontSize: 30, mx: 4 }} />
+      <PersonOutlineIcon className='iconNav' onClick={handleClick} sx={{ fontSize: 30, mx: 4 }} />
       <Menu
         id="account-menu"
         anchorEl={anchorEl}

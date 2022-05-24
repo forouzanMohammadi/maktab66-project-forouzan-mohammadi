@@ -1,28 +1,26 @@
-import React from 'react';
-import {
-    Tab,
-    Menu,
-    MenuItem,
-    Link,
-  } from '@mui/material';
+import React from 'react'
+import { Menu, MenuItem, Link } from '@mui/material'
 
 function DropDownProducts() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-    
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   return (
     <>
-      <Tab
-        id="resources-button"
+      <Link
+        underline="none"
+        sx={{ cursor: 'pointer',pr:4 }}
         onClick={handleClick}
-        label="دسته‌بندی محصولات"
-      />
+        className="tabNav LinkNav"
+      >
+        دسته‌بندی محصولات
+      </Link>
       <Menu
         sx={{ top: '-10px', left: '25px' }}
         id="account-menu"
@@ -73,7 +71,7 @@ function DropDownProducts() {
         </MenuItem>
       </Menu>
     </>
-  );
-};
+  )
+}
 
-export default DropDownProducts;
+export default DropDownProducts

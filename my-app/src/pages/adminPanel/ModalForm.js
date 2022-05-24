@@ -61,9 +61,6 @@ const ModalForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {/* {errors.name && touched.name && (
-                  <span className="error">{errors.name}</span>
-                )} */}
           </div>
 
           <div className="form-row">
@@ -92,8 +89,6 @@ const ModalForm = () => {
           <button
           className="btnForm"
             type="submit"
-            // className={!(dirty && isValid) ? "disabled-btn" : ""}
-            // disabled={!(dirty && isValid)}
           >
             ذخیره
           </button>

@@ -4,7 +4,6 @@ import DrawerMenu from 'layouts/components/DrawerMenu';
 import DropDownAdmin from 'layouts/components/DropDownAdmin';
 import {
   Grid,
-  Tab,
   Toolbar,
   InputBase,
   CssBaseline,
@@ -14,7 +13,7 @@ import {
 } from '@mui/material';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
-import image from 'assets/images/theLogo.png';
+import image from 'assets/images/thisLogo-removebg-preview.png';
 import iranSans from 'assets/fonts/iranSans/Sansa4fran3.woff';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -35,13 +34,13 @@ const myTheme = createTheme({
 })
 
 const AppbarStyle = styled('div')(() => ({
-  position: 'fixed',
+  position: 'static',
   top: '0',
   width: '100%',
   zIndex: '1000',
   direction: 'rtl',
   boxShadow: 'none',
-  background: 'rgba(208, 170, 208, 0.55)',
+  background: '#F24B4B',
   backdropFilter: 'blur(16px) saturate(180%)',
   borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
 }))
@@ -51,12 +50,8 @@ const Search = styled('div')(({ theme }) => ({
   zIndex: '100',
   alignItems: 'center',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: '#8269bdc8',
-  color: '#fff',
-  '&:hover': {
-    backgroundColor: '#F5EEF8',
-    color: '#000',
-  },
+  backgroundColor: '#fff',
+  color: '#000',
   marginRight: theme.spacing(-8),
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(10),
@@ -84,7 +79,7 @@ function Navbar() {
   return (
     <ThemeProvider theme={myTheme}>
       <CssBaseline />
-      <AppbarStyle position="fixed">
+      <AppbarStyle>
         <Toolbar>
           {isMatch ? (
             <>
@@ -93,16 +88,18 @@ function Navbar() {
           ) : (
             <Grid container>
               <Grid item xs={2}>
+                <Link href='/'>
                 <img className="logo" src={image} alt="logo" />
+                </Link>
               </Grid>
-              <Grid item xs={4} color='black'>
-                <Grid sx={{ pt: 1 }}>
-                  <Tab label="صفحه اصلی" component={Link} to="/" />
+              <Grid item xs={4}>
+                <Grid sx={{ pt:4}}>
+                  <Link className='LinkNav' underline='none' href='/'>صفحه اصلی</Link>
                   <DropDownProducts />
                 </Grid>
               </Grid>
               <Grid item xs={4} sx={{ mt: 2 }}>
-                <Search>
+                <Search sx={{mt:1}}>
                   <SearchIcon />
                   <StyledInputBase
                     placeholder="جستجو کنید..."
@@ -110,16 +107,15 @@ function Navbar() {
                   />
                 </Search>
               </Grid>
-              <Grid sx={{ display: 'flex', alignItems: 'center' }}>
+              <Grid sx={{pt:3}}>
                 <DropDownAdmin />
                 <Link href='/basket' underline='none' color="black">
-                  <LocalGroceryStoreOutlinedIcon />
+                  <LocalGroceryStoreOutlinedIcon className='iconNav' />
                 </Link>
               </Grid>
             </Grid>
           )}
         </Toolbar>
-        {/* <Divider variant="middle" /> */}
       </AppbarStyle>
     </ThemeProvider>
   )

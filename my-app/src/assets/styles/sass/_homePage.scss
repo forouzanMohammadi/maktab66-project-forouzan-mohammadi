@@ -1,0 +1,87 @@
+.category-container {
+  border: 2px solid rgba(134, 134, 134, 0.357);
+  background-color: rgb(245, 245, 245);
+  border-radius: 25px;
+  width: 90vw !important;
+  margin: auto;
+  margin-bottom: 30px;
+  text-align: center;
+
+  .suggestCat{
+      color:rgba(0, 0, 0, 0.759);
+      font-weight: bold;
+      margin: 50px !important;
+
+  }
+}
+.card-home{
+    width:300px;
+    border-radius: 15px !important;
+    box-shadow: 5px 5px 8px #aaaaaac6 !important;
+    margin-bottom:50px !important;
+
+    .MuiCardMedia-img{
+        padding: 30px;
+        height: 300px;
+        width: 300px;
+
+        
+    }
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.linkCat{
+    cursor: pointer;
+
+    img{
+        border-radius: 50%;
+        padding: 10px;
+        margin-top: 50px !important;
+        width: 60px;
+        height: 60px;
+    }
+    .babyIcon{
+        background-color: rgb(238, 233, 178);
+    }
+    .womanIcon{
+        background-color: rgb(173, 233, 161);
+    }
+    .manIcon{
+        background-color: rgb(227, 178, 238);
+    }
+    .linkText{
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover{
+            color: rgb(67, 145, 140);
+        }
+    }
+}
+
+
+@media only screen and (max-width: 320px) {
+    .card-home {
+        width:250px;
+        .MuiCardMedia-img{
+            padding: 30px;
+            height: 250px;
+            width: 250px;
+ 
+        }
+    }
+  }
+@media only screen and (max-width: 1024px) {
+    .card-home {
+        width:250px;
+        .MuiCardMedia-img{
+            padding: 30px;
+            height: 250px;
+            width: 250px;
+ 
+        }
+    }
+  }
