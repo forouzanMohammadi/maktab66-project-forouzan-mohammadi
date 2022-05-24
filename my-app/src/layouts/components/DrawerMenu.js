@@ -104,19 +104,19 @@ function DrawerMenu() {
           <Collapse in={isOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton>
-                <Link underline="none" color="primary">
+                <Link underline="none" color="primary" href='/babyProducts'>
                   <ListItemText primary="کلاه بچه‌گانه" />
                 </Link>
               </ListItemButton>
               <Divider variant="middle" />
               <ListItemButton>
-                <Link underline="none" color="primary">
+                <Link underline="none" color="primary" href='/womanProducts'>
                   <ListItemText primary="کلاه زنانه" />
                 </Link>
               </ListItemButton>
               <Divider variant="middle" />
               <ListItemButton>
-                <Link underline="none" color="primary">
+                <Link underline="none" color="primary" href='/manProducts'>
                   <ListItemText primary="کلاه مردانه" />
                 </Link>
               </ListItemButton>

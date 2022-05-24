@@ -55,17 +55,17 @@ function DropDownProducts() {
         }}
       >
         <MenuItem onClick={handleClose} divider>
-          <Link underline="none" color="black" href="#">
+          <Link underline="none" color="black" href="/babyProducts">
             کلاه بچه‌گانه
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose} divider>
-          <Link underline="none" color="black" href="#">
+          <Link underline="none" color="black" href="/womanProducts">
             کلاه زنانه
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link underline="none" color="black" href="#">
+          <Link underline="none" color="black" href="/manProducts">
             کلاه مردانه
           </Link>
         </MenuItem>

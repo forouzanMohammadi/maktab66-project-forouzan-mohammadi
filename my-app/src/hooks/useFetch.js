@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 
 const delay = () => {
-  return new Promise((resolve) => setTimeout(() => resolve("delay"), 2000));
+  return new Promise((resolve) => setTimeout(() => resolve("delay"), 1000));
 };
 
 const useFetch = (url, config  = {}) => {
@@ -16,7 +16,6 @@ const useFetch = (url, config  = {}) => {
       try {
         setLoading(true);
         const response = await AdminApis.getProducts(url);
-        console.log(response);
         await delay();
         setData(response);
   

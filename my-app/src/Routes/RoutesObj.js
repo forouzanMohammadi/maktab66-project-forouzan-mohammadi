@@ -7,7 +7,9 @@ import AdminPanel from 'pages/adminPanel/AdminPanel';
 import Payment from 'pages/payment/Payment';
 import PaymentFail from 'pages/paymentFail/PaymentFail';
 import PaymentSuccess from 'pages/paymentSuccess/PaymentSuccess';
-import Products from 'pages/products/Products';
+import ManProducts from 'pages/products/ManProducts';
+import BabyProducts from 'pages/products/BabyProducts';
+import WomanProducts from 'pages/products/WomanProducts';
 import Product from 'pages/product/Product';
 import Orders from 'pages/orders/Orders';
 import Quantity from 'pages/quantity/Quantity';
@@ -22,28 +24,28 @@ const RoutesObj = [
   },
   {
     pathname: '/basket',
-    name: 'basket',
+    name: 'Basket',
     isPrivate: false,
     id: 'basket',
     element: <Basket />,
   },
   {
     pathname: '/checkout',
-    name: 'checkout',
+    name: 'Checkout',
     isPrivate: false,
     id: 'checkout',
     element: <Checkout />,
   },
   {
     pathname: '/login',
-    name: 'login',
+    name: 'Login',
     isPrivate: true,
     id: 'login',
     element: <Login />,
   },
   {
     pathname: '/adminPanel',
-    name: 'admin panel',
+    name: 'Admin Panel',
     isPrivate: false,
     id: 'adminPanel',
     element: <AdminPanel />,
@@ -70,29 +72,43 @@ const RoutesObj = [
     element: <PaymentSuccess />,
   },
   {
-    pathname: '/products',
-    name: 'Products',
+    pathname: '/babyProducts',
+    name: 'Baby Products',
     isPrivate: false,
-    id: 'Products',
-    element: <Products />,
+    id: 'babyProducts',
+    element: <BabyProducts />,
+  },
+  {
+    pathname: '/womanProducts',
+    name: 'Woman Products',
+    isPrivate: false,
+    id: 'womanProducts',
+    element: <WomanProducts />,
+  },
+  {
+    pathname: '/manProducts',
+    name: 'Man Products',
+    isPrivate: false,
+    id: 'manProducts',
+    element: <ManProducts />,
   },
   {
     pathname: '/product',
     name: 'Product',
     isPrivate: false,
-    id: 'Product',
+    id: 'product',
     element: <Product />,
   },
   {
     pathname: '/quantity',
-    name: 'quantity',
+    name: 'Quantity',
     isPrivate: false,
     id: 'quantity',
     element: <Quantity />,
   },
   {
     pathname: '/orders',
-    name: 'orders',
+    name: 'Orders',
     isPrivate: false,
     id: 'orders',
     element: <Orders />,
