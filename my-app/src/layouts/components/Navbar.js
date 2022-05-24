@@ -92,13 +92,13 @@ function Navbar() {
                 <img className="logo" src={image} alt="logo" />
                 </Link>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4.5}>
                 <Grid sx={{ pt:4}}>
                   <Link className='LinkNav' underline='none' href='/'>صفحه اصلی</Link>
                   <DropDownProducts />
                 </Grid>
               </Grid>
-              <Grid item xs={4} sx={{ mt: 2 }}>
+              <Grid item xs={3.5} sx={{ mt: 2 }}>
                 <Search sx={{mt:1}}>
                   <SearchIcon />
                   <StyledInputBase

@@ -1,0 +1,131 @@
+.categoris-container {
+  border: 2px solid rgba(134, 134, 134, 0.357);
+  background-color: rgb(245, 245, 245);
+  border-radius: 25px;
+  margin: auto;
+  margin-bottom: 30px;
+  text-align: center;
+
+  .suggestCat {
+    color: rgba(0, 0, 0, 0.759);
+    font-weight: bold;
+    font-size: 22px;
+    margin: 40px !important;
+    user-select: none;
+  }
+}
+.card-home {
+  width: 270px;
+  border-radius: 15px !important;
+  box-shadow: 5px 5px 8px #aaaaaac6 !important;
+  margin-bottom: 50px !important;
+
+  .MuiCardMedia-img {
+    padding: 30px;
+    height: 270px;
+    width: 270px;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.linkCat {
+  cursor: pointer;
+  text-decoration: none;
+
+  img {
+    border-radius: 50%;
+    padding: 10px;
+    margin-top: 50px !important;
+    width: 60px;
+    height: 60px;
+  }
+  .babyIcon {
+    background-color: rgb(238, 233, 178);
+  }
+  .womanIcon {
+    background-color: rgb(173, 233, 161);
+  }
+  .manIcon {
+    background-color: rgb(227, 178, 238);
+  }
+  .linkText {
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+
+    &:hover {
+      color: rgb(51, 123, 118);
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+    // .categoris-container{
+    //     width: 80vw !important;
+    // //  margin-left:50px !important;
+    // }
+    // .products-pagination{
+    //   button{
+    //       min-width: 24px !important;
+    //   }
+    // }
+    .sidebar {
+        display: none;
+    }
+  .card-home {
+    width: 200px !important;
+    .MuiCardMedia-img {
+      padding: 30px !important;
+      height: 200px !important;
+      width: 200px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+    .categoris-container{
+        width:80% !important;
+    }
+    .sidebar {
+        display: none;
+    }
+  .card-home {
+    width: 250px;
+    .MuiCardMedia-img {
+      padding: 30px;
+      height: 250px;
+      width: 250px;
+    }
+  }
+}
+@media only screen and (width: 768px) {
+    .categoris-container{
+        width:80% !important;
+    }
+    .sidebar {
+        display: none;
+    }
+  .card-home {
+    width: 250px;
+    .MuiCardMedia-img {
+      padding: 30px;
+      height: 250px;
+      width: 250px;
+    }
+  }
+}
+@media only screen and (max-width: 1024px) {
+    .categoris-container{
+        padding: 0 20px;
+    }
+  .card-home {
+    width: 220px !important;
+    .MuiCardMedia-img {
+      padding: 30px !important;
+      height: 200px !important;
+      width: 210px !important;
+    }
+  }
+}

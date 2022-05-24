@@ -17,12 +17,12 @@ import {
 const BASE_URl = 'http://localhost:3002'
 
 function WomanProducts() {
-  const limit = useMemo(() => 6, [])
-  const [activePage, setActivePage] = useState(1)
+  const limit = useMemo(() => 6, []);
+  const [activePage, setActivePage] = useState(1);
   const { data, loading } = useFetch(
     `products?categoryId=2&_page=${activePage}&_limit=${limit}`,
-  )
-  console.log(data?.data)
+  );
+
   return (
     <div>
       {loading ? (
@@ -41,7 +41,7 @@ function WomanProducts() {
         </Box>
       ) : (
         <>
-          <Grid container className="category-container" sx={{ mt: 10 }}>
+          <Grid container className="categoris-container" sx={{ mt:8 }}>
             <Grid item xs={12}>
               <Typography className="suggestCat">
               دسته‌بندی کلاه زنانه
@@ -80,8 +80,9 @@ function WomanProducts() {
               </Grid>
             ))}
           </Grid>
-          <Grid sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid sx={{ display: 'flex', justifyContent: 'center', mb:5 }}>
             <Pagination
+            className="products-pagination"
               dir="ltr"
               variant="outlined"
               defaultPage={1}

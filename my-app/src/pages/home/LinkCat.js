@@ -12,7 +12,7 @@ function LinkCat() {
         <Grid>
           <Link underline='none' href='/babyProducts' className="linkCat">
             <Grid>
-              <img src={babyLink} className="babyIcon" />
+              <img src={babyLink} className="babyIcon" alt='icon' />
             </Grid>
             <Typography className="linkText">کلاه بچه‌گانه</Typography>
           </Link>
@@ -20,7 +20,7 @@ function LinkCat() {
         <Grid>
           <Link underline='none' href='/womanProducts' className="linkCat">
             <Grid>
-              <img src={womanLink} className="womanIcon" />
+              <img src={womanLink} className="womanIcon" alt='icon' />
             </Grid>
             <Typography className="linkText womanLinkTxt">کلاه زنانه</Typography>
           </Link>
@@ -28,7 +28,7 @@ function LinkCat() {
         <Grid>
           <Link underline='none' href='/manProducts' className="linkCat">
             <Grid>
-              <img src={manLink} className="manIcon" />
+              <img src={manLink} className="manIcon" alt='icon' />
             </Grid>
             <Typography className="linkText">کلاه مردانه</Typography>
           </Link>
