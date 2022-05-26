@@ -45,6 +45,7 @@ function Home(props) {
         </Grid>
         {babiesCat.map((product) => (
           <Grid
+            key={product.id}
             item
             sm={6}
             md={4}
@@ -67,7 +68,7 @@ function Home(props) {
                     <Typography variant="body2" color="text.secondary">
                       <Link
                         variant="body1"
-                        underline="non"
+                        underline="none"
                         pl={5}
                         className="visit"
                       >
@@ -90,6 +91,7 @@ function Home(props) {
         </Grid>
         {womenCat.map((hat) => (
           <Grid
+            key={hat.id}
             item
             sm={6}
             md={4}
@@ -112,7 +114,7 @@ function Home(props) {
                     <Typography variant="body2" color="text.secondary">
                       <Link
                         variant="body1"
-                        underline="non"
+                        underline="none"
                         pl={5}
                         className="visit"
                       >
@@ -135,6 +137,7 @@ function Home(props) {
         </Grid>
         {menCat.map((hats) => (
           <Grid
+            key={hats.id}
             item
             sm={6}
             md={4}
@@ -157,7 +160,7 @@ function Home(props) {
                     <Typography variant="body2" color="text.secondary">
                       <Link
                         variant="body1"
-                        underline="non"
+                        underline="none"
                         pl={5}
                         className="visit"
                       >

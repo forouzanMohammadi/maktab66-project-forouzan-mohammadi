@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { AdminApis } from 'service/AdminApis';
+// import { AdminApis } from 'service/AdminApis';
+import axios from 'axios';
 
 
 export default function Sidebar() {
@@ -9,12 +10,12 @@ export default function Sidebar() {
 
   useEffect(() => {
     ;(async () => {
-      let product = await AdminApis.getProducts('products')
+      let product = await axios.get('http://localhost:3002/products')
       setData(product.data)
     })()
   }, []);
 
-  console.log(data);
+  console.log(data,"hello");
 
   return (
     <Grid className="sidebar">

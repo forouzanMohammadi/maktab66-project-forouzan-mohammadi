@@ -5,6 +5,7 @@ import UserLayout from 'layouts/UserLayout';
 import { Grid, Box, Button, Typography } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
+// import CircularProgress from '@mui/material/CircularProgress';
 
 function DetailProduct() {
   const productId = useParams();
@@ -13,10 +14,10 @@ function DetailProduct() {
   const [count, setCount] = useState(0);
   const [Index , setIndex]= useState(0);
 
-
+  // <CircularProgress />
   useEffect(() => {
     ;(async () => {
-      let detailProduct = await AdminApis.getCategory(`/${Id}`)
+      let detailProduct = await AdminApis.getCtegory(`/${Id}`)
       setProduct(detailProduct.data)
     })()
   }, [Id]);
@@ -31,15 +32,15 @@ function DetailProduct() {
     }
   };
 
-  // const myRef = useRef();
+  const myRef = useRef();
 
   function handleTab(index){
     setIndex(index)
-    // const images = myRef.current.children;
-    // for(let i=0; i<images.length; i++){
-    //   images[i].className = images[i].className.replace("active", "")
-    // }
-    // images[index].className="active"
+    const images = myRef.current.children;
+    for(let i=0; i<images.length; i++){
+      images[i].className = images[i].className.replace("active", "")
+    }
+    images[index].className="active"
   }
 
 
@@ -48,7 +49,7 @@ function DetailProduct() {
 
   return (
     <Grid className="details" key={product.id}>
-      <Grid classname='img-container'>
+      <Grid className='img-container'>
         <img
           className="detailsImg"
           src={BASE_URl + product.image}

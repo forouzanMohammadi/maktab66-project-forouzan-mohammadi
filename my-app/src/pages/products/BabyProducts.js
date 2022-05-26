@@ -45,7 +45,7 @@ function BabyProducts() {
           <Grid container className="categoris-container" sx={{ mt: 8 }}>
             <Grid item xs={12}>
               <Typography className="suggestCat">
-                دسته‌بندی کلاه زنانه
+                دسته‌بندی کلاه بچه‌گانه
               </Typography>
             </Grid>
 

@@ -18,6 +18,7 @@
 }
 .card-home{
     width:300px;
+    height: 370px;
     border-radius: 15px !important;
     box-shadow: 5px 5px 8px #aaaaaac6 !important;
     margin-bottom:50px !important;
@@ -77,9 +78,10 @@
         }
     }
   }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 769px) {
     .card-home {
         width:250px;
+        height: 330px !important;
         .MuiCardMedia-img{
             padding: 30px;
             height: 250px;
@@ -87,4 +89,16 @@
  
         }
     }
-  }
+}
+@media only screen and (max-width: 1024px) {
+    .card-home {
+        width:250px;
+        height: 320px;
+        .MuiCardMedia-img{
+            padding: 30px;
+            height: 250px;
+            width: 250px;
+ 
+        }
+    }
+}
