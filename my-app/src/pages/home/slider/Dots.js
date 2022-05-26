@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function Dots({ activeIndex, onclick, imageSlider }) {
   return (
@@ -12,6 +12,6 @@ function Dots({ activeIndex, onclick, imageSlider }) {
       ))}
     </div>
   )
-}
+};
 
-export default Dots
+export default Dots;

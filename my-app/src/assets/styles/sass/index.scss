@@ -5,6 +5,7 @@
 @import "homePage";
 @import "sidebarStyle";
 @import "productsPage";
+@import "detailCard";
 
 
 @font-face {
@@ -36,6 +37,8 @@ body {
   font-size: 18px !important;
   width:10px !important;
 }
-
+.linkDetail{
+  text-decoration: none;
+}
 
 

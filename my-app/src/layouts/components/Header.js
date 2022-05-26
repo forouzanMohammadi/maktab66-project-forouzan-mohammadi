@@ -1,6 +1,6 @@
-import React from 'react'
-import { Box, Typography, Tabs, Tab, Grid, Link } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import React from 'react';
+import { Box, Typography, Tabs, Tab, Grid, Link } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 const AppbarStyle = styled('div')(() => ({
   position: 'static',
@@ -12,13 +12,13 @@ const AppbarStyle = styled('div')(() => ({
   background: 'rgba(208, 170, 208, 0.55)',
   backdropFilter: 'blur(16px) saturate(180%)',
   borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
-}))
+}));
 function Header() {
   const [value, setValue] = React.useState('one')
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
-  }
+  };
   return (
     <AppbarStyle
       sx={{ display: 'flex', justifyContent: 'space-evenly', mt: 4 }}
@@ -57,6 +57,6 @@ function Header() {
       </Grid>
     </AppbarStyle>
   )
-}
+};
 
-export default Header
+export default Header;

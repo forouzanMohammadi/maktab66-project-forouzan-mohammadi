@@ -1,55 +1,68 @@
-import React from 'react'
-import { Grid } from '@mui/material'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { AdminApis } from 'service/AdminApis';
+
 
 export default function Sidebar() {
+  const [data, setData]=useState({})
+
+  useEffect(() => {
+    ;(async () => {
+      let product = await AdminApis.getProducts('products')
+      setData(product.data)
+    })()
+  }, []);
+
+  console.log(data);
+
   return (
     <Grid className="sidebar">
       <Grid>
         <Link to={'/babyProducts'} className='side-link-top' >دسته‌بندی کلاه بچه‌گانه</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه بافت</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه بافت</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه آفتابی</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه آفتابی</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه پاپیونی</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه پاپیونی</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه بندی</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه بندی</Link>
       </Grid>
       <Grid pt={5}>
         <Link to={'/womanProducts'} className='side-link-top'>دسته‌بندی کلاه زنانه</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه بِرِت</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه بِرِت</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه بولر</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه بولر</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه باکت</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه باکت</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه فلاپی</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه فلاپی</Link>
       </Grid>
       <Grid pt={5}>
         <Link to={'/manProducts'} className='side-link-top'>دسته‌بندی کلاه مردانه</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه لئونی</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه لئونی</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه باکت</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه باکت</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه نیوزبوی</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه نیوزبوی</Link>
       </Grid>
       <Grid>
-        <Link to={'#'} className='side-link'>کلاه پاناما</Link>
+        <Link to={`/products/${data.subCategoryId}`} className='side-link'>کلاه پاناما</Link>
       </Grid>
     </Grid>
   )
-}
+};

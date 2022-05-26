@@ -1,7 +1,7 @@
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 // import Footer from "./components/Footer";
-import Sidebar from './components/Sidebar'
-import { Grid } from '@mui/material'
+import Sidebar from './components/Sidebar';
+import { Grid } from '@mui/material';
 
 const ProductsLayout = (Component) => {
   return (props) => (
@@ -18,6 +18,6 @@ const ProductsLayout = (Component) => {
       {/* <Footer /> */}
     </>
   )
-}
+};
 
-export default ProductsLayout
+export default ProductsLayout;

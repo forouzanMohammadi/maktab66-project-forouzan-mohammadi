@@ -12,38 +12,30 @@ import {
   TableRow,
 } from '@mui/material';
 import {useFetch} from 'hooks/useFetch';
-import AdminLayout from 'layouts/AdminLayout'
-import EditIcon from '@mui/icons-material/Edit'
-import { IconButton, Typography, Button } from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete'
-import Modal from './Modal'
-// import { AdminApis } from 'service/AdminApis';
-// import { useDispatch } from "react-redux";
-// import { productRemoved } from "redux/ProductSlice";
+import AdminLayout from 'layouts/AdminLayout';
+import EditIcon from '@mui/icons-material/Edit';
+import { IconButton, Typography, Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Modal from './Modal';
+
 
 const AdminPanel = () => {
-  const limit = useMemo(() => 5, [])
-  const [activePage, setActivePage] = useState(1)
-  const { data, loading } = useFetch(`products?_page=${activePage}&_limit=${limit}`)
-  const [showModal, setShowModal] = useState(false)
-  // const {dispatch} =useDispatch()
+  const limit = useMemo(() => 5, []);
+  const [activePage, setActivePage] = useState(1);
+  const { data, loading } = useFetch(`products?_page=${activePage}&_limit=${limit}`);
+  const [showModal, setShowModal] = useState(false);
 
-  const BASE_URl = 'http://localhost:3002'
+
+  const BASE_URl = 'http://localhost:3002';
 
   const handleClickOpen = () => {
     setShowModal(true)
-    // () => console.log(params.id)
   }
 
   const handleClose = () => {
     setShowModal(false)
   }
 
-  // const deletePost=async (id)=>{
-  //   let response =await ApiAdmin.delete(id)
-  //     console.log(response)
-
-  // }
 
   return (
     <>
@@ -108,7 +100,7 @@ const AdminPanel = () => {
                     <TableRow key={record.id}>
                       <TableCell>{record.id}</TableCell>
                       <TableCell>
-                        <img className='imgDashboard' src={BASE_URl+record.image} />
+                        <img className='imgDashboard' src={BASE_URl+record.image} alt={record.name} />
                       </TableCell>
                       <TableCell>{record.name}</TableCell>
                       <TableCell>{record.subCategoryId}</TableCell>
@@ -138,6 +130,6 @@ const AdminPanel = () => {
       {showModal ? <Modal open={showModal} handleClose={handleClose} /> : ''}
     </>
   )
-}
+};
 
-export default AdminLayout(AdminPanel)
+export default AdminLayout(AdminPanel);

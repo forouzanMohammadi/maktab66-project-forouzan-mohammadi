@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { AdminApis } from 'service/AdminApis'
-import UserLayout from 'layouts/UserLayout'
+import React, { useEffect, useState } from 'react';
+import { AdminApis } from 'service/AdminApis';
+import UserLayout from 'layouts/UserLayout';
 import {
   Grid,
   Link,
@@ -9,9 +9,9 @@ import {
   CardContent,
   Typography,
   CardMedia,
-} from '@mui/material'
-import Slider from './slider/Slider'
-import LinkCat from './LinkCat'
+} from '@mui/material';
+import Slider from './slider/Slider';
+import LinkCat from './LinkCat';
 
 function Home(props) {
   const [babiesCat, setBabiesCat] = useState([])
@@ -19,7 +19,7 @@ function Home(props) {
   const [menCat, setMenCat] = useState([])
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       let resultBaby = await AdminApis.getCtegory('?subCategoryId=2&_limit=6')
       setBabiesCat(resultBaby.data)
 
@@ -29,9 +29,9 @@ function Home(props) {
       let resultMan = await AdminApis.getCtegory('?subCategoryId=9&_limit=6')
       setMenCat(resultMan.data)
     })()
-  }, [])
+  }, []);
 
-  const BASE_URl = 'http://localhost:3002'
+  const BASE_URl = 'http://localhost:3002';
   return (
     <>
       <Slider />
@@ -51,6 +51,7 @@ function Home(props) {
             xs={12}
             sx={{ display: 'flex', justifyContent: 'center' }}
           >
+            <Link>
             <Card className="card-home">
               <CardActionArea>
                 <CardMedia
@@ -71,6 +72,7 @@ function Home(props) {
                 </CardContent>
               </CardActionArea>
             </Card>
+            </Link>
           </Grid>
         ))}
       </Grid>
@@ -152,5 +154,5 @@ function Home(props) {
       </Grid>
     </>
   )
-}
-export default UserLayout(Home)
+};
+export default UserLayout(Home);

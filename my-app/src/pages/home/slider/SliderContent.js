@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function SliderContent({ activeIndex, imageSlider }) {
   return (
@@ -13,6 +13,6 @@ function SliderContent({ activeIndex, imageSlider }) {
       ))}
     </>
   )
-}
+};
 
-export default SliderContent
+export default SliderContent;

@@ -1,8 +1,8 @@
-import React from 'react'
-import { Grid, Typography, Link } from '@mui/material'
-import babyLink from 'assets/images/babyIcon.png'
-import womanLink from 'assets/images/womanIcon.png'
-import manLink from 'assets/images/manIcon.png'
+import React from 'react';
+import { Grid, Typography, Link } from '@mui/material';
+import babyLink from 'assets/images/babyIcon.png';
+import womanLink from 'assets/images/womanIcon.png';
+import manLink from 'assets/images/manIcon.png';
 
 
 function LinkCat() {
@@ -36,6 +36,6 @@ function LinkCat() {
       </Grid>
     </>
   )
-}
+};
 
-export default LinkCat
+export default LinkCat;

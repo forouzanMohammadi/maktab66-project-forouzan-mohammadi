@@ -1,4 +1,4 @@
-import Header from "./components/Header"
+import Header from "./components/Header";
 
 const AdminLayout = (Component) => {
   return (props) => (
@@ -9,4 +9,4 @@ const AdminLayout = (Component) => {
   )
 }
 
-export default AdminLayout
+export default AdminLayout;

@@ -73,8 +73,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }))
 
 function Navbar() {
-  const theme = useTheme()
-  const isMatch = useMediaQuery(theme.breakpoints.down('md'))
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <ThemeProvider theme={myTheme}>

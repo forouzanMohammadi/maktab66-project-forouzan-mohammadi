@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 
 const delay = () => {
-  return new Promise((resolve) => setTimeout(() => resolve("delay"), 1000));
+  return new Promise((resolve) => setTimeout(() => resolve("delay"), 2000));
 };
 
 const useFetch = (url, config  = {}) => {

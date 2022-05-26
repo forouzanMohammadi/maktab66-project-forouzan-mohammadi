@@ -13,6 +13,7 @@ import WomanProducts from 'pages/products/WomanProducts';
 import DetailProduct from 'pages/detailProduct/DetailProduct';
 import Orders from 'pages/orders/Orders';
 import Quantity from 'pages/quantity/Quantity';
+import Products from 'pages/products/Products';
 
 const RoutesObj = [
   {
@@ -93,11 +94,18 @@ const RoutesObj = [
     element: <ManProducts />,
   },
   {
-    pathname: '/detailProduct',
+    pathname: '/product/:id',
     name: 'Detail Product',
     isPrivate: false,
     id: 'detailProduct',
     element: <DetailProduct />,
+  },
+  {
+    pathname: '/products/:subCategoryId',
+    name: 'products',
+    isPrivate: false,
+    id: 'Products',
+    element: <Products />,
   },
   {
     pathname: '/quantity',

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Formik } from 'formik'
-import { AdminApis } from 'service/AdminApis'
+import React from "react";
+import { Formik } from 'formik';
+import { AdminApis } from 'service/AdminApis';
 
 const ModalForm = () => {
   const initialValues = {
@@ -19,6 +19,7 @@ const ModalForm = () => {
         }
         alert(JSON.stringify(values, null, 2))
         let response = await AdminApis.addproduct(formData, config)
+        console.log(response);
       }}
     >
       {({
@@ -96,6 +97,6 @@ const ModalForm = () => {
       )}
     </Formik>
   )
-}
+};
 
-export default ModalForm
+export default ModalForm;

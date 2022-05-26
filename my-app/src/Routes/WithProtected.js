@@ -9,4 +9,4 @@ const WithProtected = ({Component}) => {
     }
     
 }
-export default WithProtected
+export default WithProtected;
