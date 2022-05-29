@@ -6,6 +6,7 @@
 @import "sidebarStyle";
 @import "productsPage";
 @import "detailCard";
+@import "Form";
 
 
 @font-face {
@@ -41,4 +42,7 @@ body {
   text-decoration: none;
 }
 
-
+.imageAdmin{
+  width: 50px !important;
+  height: 50px !important;
+}

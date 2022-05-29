@@ -1,102 +1,254 @@
-import React from "react";
-import { Formik } from 'formik';
-import { AdminApis } from 'service/AdminApis';
+import React, { useEffect, useMemo, useState } from 'react'
+import { Formik } from 'formik'
+import { AdminApis } from 'service/AdminApis'
+import axios from 'axios'
 
-const ModalForm = () => {
+const initialFormData = undefined
+
+const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
+  const [editData, setEditData] = useState(initialFormData)
+  let id = inEditMode.rowKey
+
+  useEffect(() => {
+    axios.get(`http://localhost:3002/products/${id}`).then((res) =>
+      setTimeout(() => {
+        setEditData({
+          nameProduct: res.data.categoryName,
+          thumbnail: res.data.image,
+          price: res.data.price,
+          count: res.data.count,
+        })
+      }, 1000),
+    )
+  }, [])
+
   const initialValues = {
-    nameProduct: '',
-    image: '',
+    model: '',
+    thumbnail: '',
+    price: '',
+    inventory: '',
+    name: '',
+    category: '',
   }
+
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={async (values) => {
-        let formData = new FormData()
-        formData.append('image', values.image)
-        formData.append('nameProduct', values.nameProduct)
-        const config = {
-          headers: { 'content-type': 'multipart/form-data' },
-        }
-        alert(JSON.stringify(values, null, 2))
-        let response = await AdminApis.addproduct(formData, config)
-        console.log(response);
-      }}
-    >
-      {({
-        values,
-        handleChange,
-        handleSubmit,
-        errors,
-        touched,
-        handleBlur,
-        setFieldValue,
-        isValid,
-        dirty,
-      }) => (
-        <form onSubmit={handleSubmit} className="containerForm">
-          <div className="form-row">
-            <label htmlFor="image">تصویر کالا </label>
-            <input
-            className="inputForm"
-              id="image"
-              name="image"
-              type="file"
-              onChange={(event) => {
-                const file = event.target.files[0]
-                console.log(file.name)
-                console.log(file.size)
-                console.log(file.type)
-                setFieldValue('image', event.currentTarget.files[0])
-              }}
-            />
-          </div>
+    <>
+      {editData ? (
+        <Formik
+          initialValues={editData}
+          enableReinitialize
+          onSubmit={async (values) => {
+            const response = await AdminApis.put(id, values)
+            getPosts()
+            handleClose()
+          }}
+        >
+          {({
+            values,
+            handleChange,
+            handleSubmit,
+            errors,
+            touched,
+            handleBlur,
+            setFieldValue,
+            isValid,
+            dirty,
+          }) => (
+            <form onSubmit={handleSubmit} className="containerform">
+              <div className="form-row">
+                <label htmlFor="thumbnail">تصویر کالا </label>
+                <input
+                  className="inputForm"
+                  id="thumbnail"
+                  name="thumbnail"
+                  type="file"
+                  onChange={(event) => {
+                    setFieldValue('file', event.currentTarget.files[0])
+                  }}
+                />
+              </div>
+              <div className="form-main">
+                <div className="form-row">
+                  <label htmlFor="model">نام کالا</label>
+                  <input
+                    className="inputForm"
+                    type="text"
+                    name="model"
+                    id="model"
+                    value={values.model}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </div>
+                <div className="form-row">
+                  <label htmlFor="price">قیمت</label>
+                  <input
+                    className="inputForm"
+                    type="text"
+                    name="price"
+                    id="price"
+                    value={values.price}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </div>
+              </div>
+              <div className="form-main">
+                <div className="form-row">
+                  <label htmlFor="inventory">تعداد</label>
+                  <input
+                    className="inputForm"
+                    type="number"
+                    name="inventory"
+                    id="inventory"
+                    value={values.inventory}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </div>
+                <div className="form-row">
+                  <label htmlFor="category">دسته بندی</label>
+                  <select>
+                    <option value="category" disabled>
+                      دسته بندی
+                    </option>
+                    <option value="mobil">کلاه بچه‌گانه</option>
+                    <option value="laptop">کلاه زنانه</option>
+                    <option value="tablet">کلاه مردانه</option>
+                  </select>
+                </div>
+              </div>
 
-          <div className="form-row">
-            <label htmlFor="name">نام کالا</label>
-            <input
-            className="inputForm"
-              type="text"
-              name="nameProduct"
-              id="nameProduct"
-              value={values.nameProduct}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
+              <div className="form-row">
+                <label htmlFor="description ">توضیحات</label>
+                <input
+                  className="inputForm"
+                  type="text"
+                  name="description"
+                  id="description"
+                  value={values.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <button type="submit">ذخیره</button>
+            </form>
+          )}
+        </Formik>
+      ) : (
+        <Formik
+          initialValues={initialValues}
+          onSubmit={async (values) => {
+            let formData = new FormData()
+            formData.append('image', values.file)
+            // const config = {
+            //   headers: { "content-type": "multipart/form-data" },
+            // };
+            let response = await AdminApis.update(formData)
+            console.log(response.data.filename)
+            formData.append('model', values.model)
+            formData.append('price', values.price)
+            formData.append('category', values.category)
+            await AdminApis.addproduct(formData)
+            getPosts()
+            handleClose()
+          }}
+        >
+          {({
+            values,
+            handleChange,
+            handleSubmit,
+            errors,
+            touched,
+            handleBlur,
+            setFieldValue,
+            isValid,
+            dirty,
+          }) => (
+            <form onSubmit={handleSubmit} className="containerform">
+              <div className="form-row">
+                <label htmlFor="thumbnail">تصویر کالا </label>
+                <input
+                  className="inputForm"
+                  id="thumbnail"
+                  name="thumbnail"
+                  type="file"
+                  onChange={(event) => {
+                    setFieldValue('file', event.currentTarget.files[0])
+                  }}
+                />
+              </div>
+              <div className="form-main">
+                <div className="form-row">
+                  <label htmlFor="model">نام کالا</label>
+                  <input
+                    className="inputForm"
+                    type="text"
+                    name="model"
+                    id="model"
+                    value={values.model}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </div>
+                <div className="form-row">
+                  <label htmlFor="price">قیمت</label>
+                  <input
+                    className="inputForm"
+                    type="text"
+                    name="price"
+                    id="price"
+                    value={values.price}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </div>
+              </div>
+              <div className="form-main">
+                <div className="form-row">
+                  <label htmlFor="inventory">تعداد</label>
+                  <input
+                    className="inputForm"
+                    type="number"
+                    name="inventory"
+                    id="inventory"
+                    value={values.inventory}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                </div>
+                <div className="form-row">
+                  <label htmlFor="category">دسته بندی</label>
+                  <select>
+                    <option value="category" disabled>
+                      دسته بندی
+                    </option>
+                    <option value="mobil">کلاه بچه‌گانه</option>
+                    <option value="laptop">کلاه زنانه</option>
+                    <option value="tablet">کلاه مردانه</option>
+                  </select>
+                </div>
+              </div>
 
-          <div className="form-row">
-            <label htmlFor="password">دسته بندی</label>
-            <select className="selectForm">
-              <option value="category" disabled>
-                دسته بندی
-              </option>
-              <option value="mobil">کلاه بچه‌گانه</option>
-              <option value="laptop">کلاه زنانه</option>
-              <option value="tablet">کلاه مردانه</option>
-            </select>
-          </div>
-          <div className="form-row">
-            <label htmlFor="description ">توضیحات</label>
-            <input
-            className="inputForm"
-              type="text"
-              name="description"
-              id="description"
-              value={values.description}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </div>
-          <button
-          className="btnForm"
-            type="submit"
-          >
-            ذخیره
-          </button>
-        </form>
+              <div className="form-row">
+                <label htmlFor="description ">توضیحات</label>
+                <input
+                  className="inputForm"
+                  type="text"
+                  name="description"
+                  id="description"
+                  value={values.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+              </div>
+              <button type="submit">ذخیره</button>
+            </form>
+          )}
+        </Formik>
       )}
-    </Formik>
+    </>
   )
-};
+}
 
-export default ModalForm;
+export default ModalForm

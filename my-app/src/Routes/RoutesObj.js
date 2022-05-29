@@ -7,13 +7,12 @@ import AdminPanel from 'pages/adminPanel/AdminPanel';
 import Payment from 'pages/payment/Payment';
 import PaymentFail from 'pages/paymentFail/PaymentFail';
 import PaymentSuccess from 'pages/paymentSuccess/PaymentSuccess';
-import ManProducts from 'pages/products/ManProducts';
-import BabyProducts from 'pages/products/BabyProducts';
-import WomanProducts from 'pages/products/WomanProducts';
 import DetailProduct from 'pages/detailProduct/DetailProduct';
 import Orders from 'pages/orders/Orders';
 import Quantity from 'pages/quantity/Quantity';
 import Products from 'pages/products/Products';
+import Category from 'pages/products/Category';
+import SubCategory from 'pages/products/SubCategory';
 
 const RoutesObj = [
   {
@@ -73,39 +72,32 @@ const RoutesObj = [
     element: <PaymentSuccess />,
   },
   {
-    pathname: '/babyProducts',
-    name: 'Baby Products',
-    isPrivate: false,
-    id: 'babyProducts',
-    element: <BabyProducts />,
-  },
-  {
-    pathname: '/womanProducts',
-    name: 'Woman Products',
-    isPrivate: false,
-    id: 'womanProducts',
-    element: <WomanProducts />,
-  },
-  {
-    pathname: '/manProducts',
-    name: 'Man Products',
-    isPrivate: false,
-    id: 'manProducts',
-    element: <ManProducts />,
-  },
-  {
-    pathname: '/product/:id',
-    name: 'Detail Product',
-    isPrivate: false,
-    id: 'detailProduct',
-    element: <DetailProduct />,
-  },
-  {
-    pathname: '/products/:subCategoryId',
+    pathname: '/products',
     name: 'products',
     isPrivate: false,
     id: 'Products',
     element: <Products />,
+  },
+  {
+    pathname: '/products/category:categoryId',
+    name: 'products',
+    isPrivate: false,
+    id: 'Products',
+    element: <Category />,
+  },
+  {
+    pathname: '/products/category:categoryId/subcategory:subCategoryId',
+    name: 'products',
+    isPrivate: false,
+    id: 'Products',
+    element: <SubCategory />,
+  },
+  {
+    pathname: '/product:id',
+    name: 'Detail Product',
+    isPrivate: false,
+    id: 'detailProduct',
+    element: <DetailProduct />,
   },
   {
     pathname: '/quantity',

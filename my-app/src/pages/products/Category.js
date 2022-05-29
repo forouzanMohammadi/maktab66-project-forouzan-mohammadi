@@ -1,7 +1,8 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { useFetch } from 'hooks/useFetch'
 import ProductsLayout from 'layouts/ProductsLayout'
-import { Link as LinkRoute } from 'react-router-dom'
+import { Link as LinkRoute, useParams } from 'react-router-dom'
+import { AdminApis } from 'service/AdminApis'
 import {
   Grid,
   Link,
@@ -15,14 +16,26 @@ import {
   Box,
 } from '@mui/material'
 
-const BASE_URl = 'http://localhost:3002'
+const BASE_URl = 'http://localhost:3002';
 
-function BabyProducts() {
+function Category() {
+  let params = useParams()
+  let catId = parseInt(params.categoryId)
+
+  const [cat, setCat] = useState({})
   const limit = useMemo(() => 6, [])
   const [activePage, setActivePage] = useState(1)
   const { data, loading } = useFetch(
-    `products?categoryId=3&_page=${activePage}&_limit=${limit}`,
+    `products?categoryId=${catId}&_page=${activePage}&_limit=${limit}`,
+
   )
+  useEffect(() => {
+    ;(async () => {
+      let response = await AdminApis.getProducts(`categories?id=${catId}`)
+      setCat(response.data)
+
+    })()
+  }, [catId])
 
   return (
     <div>
@@ -45,7 +58,7 @@ function BabyProducts() {
           <Grid container className="categoris-container" sx={{ mt: 8 }}>
             <Grid item xs={12}>
               <Typography className="suggestCat">
-                دسته‌بندی کلاه بچه‌گانه
+                {"دسته‌بندی "+cat[0]?.name}
               </Typography>
             </Grid>
 
@@ -59,7 +72,7 @@ function BabyProducts() {
                 xs={12}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <LinkRoute className="linkDetail" to={`/product/${product.id}`}>
+                <LinkRoute className="linkDetail" to={`/product${product.id}`}>
                   <Card className="card-home">
                     <CardActionArea>
                       <CardMedia
@@ -80,7 +93,7 @@ function BabyProducts() {
                           >
                             مشاهده
                           </Link>
-                          {product.price + 'تومان'}
+                          {product.price + ' تومان'}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
@@ -106,4 +119,4 @@ function BabyProducts() {
   )
 }
 
-export default ProductsLayout(BabyProducts)
+export default ProductsLayout(Category)

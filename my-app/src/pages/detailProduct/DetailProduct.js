@@ -5,16 +5,17 @@ import UserLayout from 'layouts/UserLayout';
 import { Grid, Box, Button, Typography } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
-// import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function DetailProduct() {
   const productId = useParams();
   let Id = parseInt(productId.id);
-  const [product, setProduct] = useState({});
+  console.log(Id);
+  const [product, setProduct] = useState(null);
   const [count, setCount] = useState(0);
   const [Index , setIndex]= useState(0);
 
-  // <CircularProgress />
+
   useEffect(() => {
     ;(async () => {
       let detailProduct = await AdminApis.getCtegory(`/${Id}`)
@@ -47,12 +48,15 @@ function DetailProduct() {
 
   const BASE_URl = 'http://localhost:3002'
 
+  if(product === null){
+    return <CircularProgress />
+  }
   return (
     <Grid className="details" key={product.id}>
       <Grid className='img-container'>
         <img
           className="detailsImg"
-          src={BASE_URl + product.image}
+          src={BASE_URl + product?.images[Index]}
           alt={product.name}
         />
         <Grid container className="detail-gallery" >

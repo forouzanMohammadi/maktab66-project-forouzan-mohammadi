@@ -1,12 +1,13 @@
+
 import * as React from 'react';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import ModalForm from './ModalForm';
 
-export default function Modal({ open, handleClose}) {
-
+export default function Modal({ open, handleClose,inEditMode,getPosts}) {
   return (
     <div>
       <Dialog
@@ -20,10 +21,10 @@ export default function Modal({ open, handleClose}) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-           <ModalForm />
+           <ModalForm inEditMode={inEditMode} handleClose={handleClose} getPosts={getPosts}/>
           </DialogContentText>
         </DialogContent>
       </Dialog>
     </div>
   );
-};
+}

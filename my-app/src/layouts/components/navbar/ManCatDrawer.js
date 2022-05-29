@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
+import { AdminApis } from 'service/AdminApis'
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import {
@@ -12,7 +13,19 @@ import {
 } from '@mui/material';
 
 function ManCatDrawer() {
+  const [firstCat, setFirstCat] = useState({})
+  const [subCat, setSubCat] = useState({})
   const [isOpen, isSetOpen] = React.useState(false);
+
+  useEffect(() => {
+    ;(async () => {
+      let firstResponse = await AdminApis.getProducts('categories/1')
+      setFirstCat(firstResponse.data)
+
+      let subResponse = await AdminApis.getProducts('subCategories')
+      setSubCat(subResponse.data)
+    })()
+  }, [])
 
   const handleClick = () => {
     isSetOpen(!isOpen)
@@ -22,7 +35,7 @@ function ManCatDrawer() {
     <>
       <ListItemButton onClick={handleClick}>
         <Grid >
-          <ListItemText primary="کلاه مردانه" />
+          <ListItemText primary={firstCat.name} />
         </Grid>
         {isOpen ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
@@ -30,26 +43,26 @@ function ManCatDrawer() {
       <Collapse in={isOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton>
-            <Link underline="none" color="primary" href="#">
-              <ListItemText primary="کلاه لئونی" />
+            <Link underline="none" color="primary" href={`/products/category${firstCat.id}/subcategory${subCat[8]?.id}`}>
+              <ListItemText primary={subCat[8]?.name} />
             </Link>
           </ListItemButton>
           <Divider variant="middle" />
           <ListItemButton>
-            <Link underline="none" color="primary" href="#">
-              <ListItemText primary="کلاه باکت" />
+            <Link underline="none" color="primary" href={`/products/category${firstCat.id}/subcategory${subCat[9]?.id}`}>
+              <ListItemText primary={subCat[9]?.name}/>
             </Link>
           </ListItemButton>
           <Divider variant="middle" />
           <ListItemButton>
-            <Link underline="none" color="primary" href="#">
-              <ListItemText primary="کلاه نیوزبوی" />
+            <Link underline="none" color="primary" href={`/products/category${firstCat.id}/subcategory${subCat[10]?.id}`}>
+              <ListItemText primary={subCat[10]?.name} />
             </Link>
           </ListItemButton>
           <Divider variant="middle" />
           <ListItemButton>
-            <Link underline="none" color="primary" href="#">
-              <ListItemText primary="کلاه پاناما" />
+            <Link underline="none" color="primary" href={`/products/category${firstCat.id}/subcategory${subCat[11]?.id}`}>
+              <ListItemText primary={subCat[11]?.name} />
             </Link>
           </ListItemButton>
           <Divider variant="middle" />

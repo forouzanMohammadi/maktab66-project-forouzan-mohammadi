@@ -21,13 +21,13 @@ function Home(props) {
 
   useEffect(() => {
     ;(async () => {
-      let resultBaby = await AdminApis.getCtegory('?subCategoryId=2&_limit=6')
+      let resultBaby = await AdminApis.getCtegory('?subCategoryId=5&_limit=6')
       setBabiesCat(resultBaby.data)
 
-      let resultWoman = await AdminApis.getCtegory('?subCategoryId=5&_limit=6')
+      let resultWoman = await AdminApis.getCtegory('?subCategoryId=8&_limit=6')
       setWomenCat(resultWoman.data)
 
-      let resultMan = await AdminApis.getCtegory('?subCategoryId=9&_limit=6')
+      let resultMan = await AdminApis.getCtegory('?subCategoryId=12&_limit=6')
       setMenCat(resultMan.data)
     })()
   }, [])
@@ -53,7 +53,7 @@ function Home(props) {
             xs={12}
             sx={{ display: 'flex', justifyContent: 'center' }}
           >
-            <LinkRoute className="linkDetail" to={`/product/${product.id}`}>
+            <LinkRoute className="linkDetail" to={`/product${product.id}`}>
               <Card className="card-home">
                 <CardActionArea>
                   <CardMedia
@@ -99,7 +99,7 @@ function Home(props) {
             xs={12}
             sx={{ display: 'flex', justifyContent: 'center' }}
           >
-            <LinkRoute className="linkDetail" to={`/product/${hat.id}`}>
+            <LinkRoute className="linkDetail" to={`/product${hat.id}`}>
               <Card className="card-home">
                 <CardActionArea>
                   <CardMedia
@@ -145,7 +145,7 @@ function Home(props) {
             xs={12}
             sx={{ display: 'flex', justifyContent: 'center' }}
           >
-            <LinkRoute className="linkDetail" to={`/product/${hats.id}`}>
+            <LinkRoute className="linkDetail" to={`/product${hats.id}`}>
               <Card className="card-home">
                 <CardActionArea>
                   <CardMedia

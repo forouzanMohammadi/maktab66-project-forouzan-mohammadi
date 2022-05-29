@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import { Menu, MenuItem, Link } from '@mui/material';
+import { AdminApis } from 'service/AdminApis'
 
 function DropDownProducts() {
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  const [firstCat, setFirstCat] = useState({})
+  const [secondCat, setSecondCat] = useState({})
+  const [thirdCat, setThirdCat] = useState({})
+  const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -10,6 +14,21 @@ function DropDownProducts() {
   const handleClose = () => {
     setAnchorEl(null)
   };
+
+
+  useEffect(() => {
+    ;(async () => {
+      let firstResponse = await AdminApis.getProducts('categories/1')
+      setFirstCat(firstResponse.data)
+
+      let secondResponse = await AdminApis.getProducts('categories/2')
+      setSecondCat(secondResponse.data)
+
+      let thirdResponse = await AdminApis.getProducts('categories/3')
+      setThirdCat(thirdResponse.data)
+
+    })()
+  }, [])
 
   return (
     <>
@@ -55,18 +74,18 @@ function DropDownProducts() {
         }}
       >
         <MenuItem onClick={handleClose} divider>
-          <Link underline="none" color="black" href="/babyProducts">
-            کلاه بچه‌گانه
+          <Link underline="none" color="black" href={`/products/category${thirdCat.id}`}>
+            {thirdCat.name}
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose} divider>
-          <Link underline="none" color="black" href="/womanProducts">
-            کلاه زنانه
+          <Link underline="none" color="black" href={`/products/category${secondCat.id}`}>
+            {secondCat.name}
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link underline="none" color="black" href="/manProducts">
-            کلاه مردانه
+          <Link underline="none" color="black" href={`/products/category${firstCat.id}`}>
+            {firstCat.name}
           </Link>
         </MenuItem>
       </Menu>
