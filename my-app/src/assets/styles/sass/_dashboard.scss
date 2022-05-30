@@ -1,0 +1,108 @@
+.adminBody{
+  width: 100%;
+  height: 90vh;
+  background-color: rgba(236, 236, 236, 0.807);
+}
+
+.tab{
+  color: rgba(255, 255, 255, 0.864) !important;
+  position: relative;
+  font-size: 14px !important;
+}
+
+.tab1 {
+  &::before {
+    content: 'aaaa';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    font-size: 1.5em;
+    color: transparent;
+    text-decoration-style: wavy;
+    text-decoration-color: rgba(255, 255, 255, 0.805);
+    text-decoration-line: underline;
+    opacity: 0;
+  }
+  &:hover::before {
+      opacity: 1;
+  }
+}
+.tab2 {
+  &::before {
+    content: 'aaaaaaaaaaa';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    font-size: 1.5em;
+    color: transparent;
+    text-decoration-style: wavy;
+    text-decoration-color: rgba(255, 255, 255, 0.805);
+    text-decoration-line: underline;
+    opacity: 0;
+  }
+  &:hover::before {
+      opacity: 1;
+  }
+}
+.tab3 { 
+  &::before {
+    content: 'aaaaaa';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    font-size: 1.5em;
+    color: transparent;
+    text-decoration-style: wavy;
+    text-decoration-color: rgba(255, 255, 255, 0.805);
+    text-decoration-line: underline;
+    opacity: 0;
+  }
+  &:hover::before {
+      opacity: 1;
+  }
+}
+
+.tblContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boxContainer{
+   width: 85vw !important;
+}
+
+.adminTbl{
+  background-color: rgba(245, 245, 245, 0.783);
+  width: 100% !important;
+}
+
+.tblRow{
+  background-color: rgba(86, 86, 86, 0.509);
+  height: 9vh !important;
+}
+.tblcel{
+  font-weight: bold !important;
+  font-size: 18px !important;
+  text-align: center !important;
+}
+.tbodyOdd{
+  text-align: center !important;
+  font-size: 15px !important;
+
+}
+.tbodyEven{
+  text-align: center !important;
+  background-color: rgba(197, 197, 197, 0.13);
+  font-size: 15px !important;
+}
+.deletIcon{
+  color:#f05f5fe4;
+}
+.editIcon{
+  color: rgba(80, 115, 169, 0.829);
+}
+.adminAddBtn{
+  background-color: rgba(80, 115, 169, 0.829) !important;
+  margin-left: 90px !important;
+  font-weight: bold !important;
+}

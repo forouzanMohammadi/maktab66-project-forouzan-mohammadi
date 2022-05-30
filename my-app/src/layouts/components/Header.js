@@ -1,62 +1,52 @@
-import React from 'react';
-import { Box, Typography, Tabs, Tab, Grid, Link } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import React from 'react'
+import { Box, Typography, Grid, Link} from '@mui/material'
+import LogoutIcon from '@mui/icons-material/Logout';
+import { styled } from '@mui/material/styles'
 
 const AppbarStyle = styled('div')(() => ({
   position: 'static',
+  display: 'flex',
+  justifyContent: 'space-evenly',
   top: '0',
   width: '100%',
-  zIndex: '1000',
+  height: '10vh !important',
   direction: 'rtl',
-  boxShadow: 'none',
-  background: 'rgba(208, 170, 208, 0.55)',
-  backdropFilter: 'blur(16px) saturate(180%)',
-  borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
-}));
-function Header() {
-  const [value, setValue] = React.useState('one')
+  background: '#F24B4B',
+  // marginTop:'20px',
+}))
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue)
-  };
+function Header() {
+
   return (
-    <AppbarStyle
-      sx={{ display: 'flex', justifyContent: 'space-evenly', mt: 4 }}
-    >
+    <AppbarStyle>
       <Grid>
-        <Typography sx={{ mx: 3 }} variant="h4">
+        <Typography mt={2} variant="h5" color={'#fff'}>
           پنل مدیریت
         </Typography>
       </Grid>
-      <Grid sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Box sx={{ width: '100%' }}>
-          <Tabs
-            Color="black"
-            value={value}
-            onChange={handleChange}
-            textColor="secondary"
-            indicatorColor="secondary"
-            aria-label="secondary tabs example"
-          >
-            <Link href="/adminPanel" underline='none' color={'primary'} >
-              <Tab value="one" label="کالاها" />
+      <Grid sx={{ display: 'flex'}}>
+        <Box mt={2}>
+            <Link href="/adminPanel" className='tab1 tab' underline="none">
+              کالاها
             </Link>
-            <Link href="/quantity" underline='none' color={'primary'} >
-              <Tab value="two" label="موجودی و قیمت‌ها" />
+            <Link  mx={6} href="/quantity" className='tab2 tab' underline="none">
+             موجودی و قیمت‌ها
             </Link>
-            <Link href="/orders" underline='none' color={'primary'} >
-              <Tab value="three" label="سفارش‌ها" />
+            <Link href="/orders" className='tab3 tab' underline="none">
+              سفارش‌ها
             </Link>
-          </Tabs>
         </Box>
       </Grid>
-      <Grid>
-        <Link sx={{ mt: 2 }} href="/" underline="none" color="secondary">
-          صفحه اصلی
+      <Grid mt={2} sx={{display:"flex"}} >
+        <Link mx={2} href="/" underline="none" color="#fff">
+          خروج
+        </Link>
+        <Link  href="/" color="#fff">
+        <LogoutIcon mt={4}/>
         </Link>
       </Grid>
     </AppbarStyle>
   )
-};
+}
 
-export default Header;
+export default Header
