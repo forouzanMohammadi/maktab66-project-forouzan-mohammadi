@@ -29,11 +29,18 @@ const Login = () => {
     validationSchema: basicSchema,
 
     onSubmit: async (user) => {
-      localStorage.removeItem('token')
-      let response = await AdminApis.login(user)
-      localStorage.setItem('token', response.data.token)
-      console.log(response.data.token)
-      navigate('/adminPanel')
+      try{
+        localStorage.removeItem('token')
+        let response = await AdminApis.login(user)
+        localStorage.setItem('token', response.data.token)
+        if(response.status ==200){
+          navigate('/adminPanel')
+        }
+        
+      } catch (error) {
+        alert("رمز عبور یا نام کاربری نادرست است.")
+      }
+   
     },
   })
 
