@@ -67,7 +67,7 @@ const AdminPanel = () => {
           padding: '30px',
         }}
       >
-        <Typography mr={10} variant="h5">مدیریت کالا</Typography>
+        <Typography className='typomanage' mr={10} variant="h5">مدیریت کالا</Typography>
         <>
           <Button className='adminAddBtn' variant="contained" onClick={() => handleClickOpen()}>
             افزودن کالا
@@ -88,8 +88,8 @@ const AdminPanel = () => {
        
           <TableContainer component={Paper}>
             <Table
+            sx={{ minWidth: 650, minHeight: 100 }}
               className="adminTbl"
-              // sx={{ minWidth: 650, minHeight: 100 }}
               size="small"
               aria-label="a dense table"
             >
@@ -124,7 +124,7 @@ const AdminPanel = () => {
                         <TableCell className='tbodyOdd'>{record.id}</TableCell>
                         <TableCell className='tbodyEven'>
                           <img
-                            src={'http://localhost:3002' + record.image}
+                            src={BASE_URl + record.image}
                             className="imageAdmin"
                           />
                         </TableCell>
@@ -151,6 +151,7 @@ const AdminPanel = () => {
           </TableContainer>
 
         <Pagination
+        className="adminpagination"
           dir="ltr"
           variant="outlined"
           defaultPage={1}

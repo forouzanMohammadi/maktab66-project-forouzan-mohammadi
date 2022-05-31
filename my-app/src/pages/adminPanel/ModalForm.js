@@ -58,6 +58,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
               <div className="form-row">
                 <label htmlFor="thumbnail">تصویر کالا </label>
                 <input
+                  multiple
                   className="inputForm"
                   id="thumbnail"
                   name="thumbnail"
@@ -169,6 +170,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
               <div className="form-row">
                 <label htmlFor="thumbnail">تصویر کالا </label>
                 <input
+                  multiple
                   className="inputForm"
                   id="thumbnail"
                   name="thumbnail"

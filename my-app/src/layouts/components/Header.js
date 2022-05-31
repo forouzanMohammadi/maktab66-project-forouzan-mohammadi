@@ -20,7 +20,7 @@ function Header() {
   return (
     <AppbarStyle>
       <Grid>
-        <Typography mt={2} variant="h5" color={'#fff'}>
+        <Typography className='adminH5' mt={2} variant="h5" color={'#fff'}>
           پنل مدیریت
         </Typography>
       </Grid>
@@ -29,7 +29,7 @@ function Header() {
             <Link href="/adminPanel" className='tab1 tab' underline="none">
               کالاها
             </Link>
-            <Link  mx={6} href="/quantity" className='tab2 tab' underline="none">
+            <Link href="/quantity" className='tab2 tab' underline="none">
              موجودی و قیمت‌ها
             </Link>
             <Link href="/orders" className='tab3 tab' underline="none">
@@ -38,7 +38,7 @@ function Header() {
         </Box>
       </Grid>
       <Grid mt={2} sx={{display:"flex"}} >
-        <Link mx={2} href="/" underline="none" color="#fff">
+        <Link mx={2} className='exit' href="/" underline="none" color="#fff">
           خروج
         </Link>
         <Link  href="/" color="#fff">
