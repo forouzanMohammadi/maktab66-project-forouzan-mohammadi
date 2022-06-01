@@ -33,7 +33,7 @@ const Login = () => {
         localStorage.removeItem('token')
         let response = await AdminApis.login(user)
         localStorage.setItem('token', response.data.token)
-        if(response.status ==200){
+        if(response.status ===200){
           navigate('/adminPanel')
         }
         

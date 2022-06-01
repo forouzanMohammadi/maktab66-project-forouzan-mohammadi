@@ -12,13 +12,12 @@ import {
   Grid
 } from '@mui/material'
 import AdminLayout from 'layouts/AdminLayout'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 import { IconButton, Typography, Button } from '@mui/material'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Modal from './Modal'
 import { AdminApis } from 'service/AdminApis'
-import axios from 'axios'
 // import Add from "components/Add";
 import { useFetch } from 'hooks/useFetch'
 const BASE_URl = 'http://localhost:3002'
@@ -52,13 +51,14 @@ const AdminPanel = () => {
   }
 
   // deletePost
-  const DeletePost = (id) => {
-    AdminApis.delete(`${id}`)
+  const DeletePost = async(id) => {
+    await AdminApis.delete(`${id}`)
+    console.log(id);
     getPosts()
   }
 
   return (
-    <div className='adminBody'>
+    <Grid className='adminBody'>
       <Box
         sx={{
           display: 'flex',
@@ -68,11 +68,9 @@ const AdminPanel = () => {
         }}
       >
         <Typography className='typomanage' mr={10} variant="h5">مدیریت کالا</Typography>
-        <>
           <Button className='adminAddBtn' variant="contained" onClick={() => handleClickOpen()}>
             افزودن کالا
           </Button>
-        </>
       </Box>
       <Grid className="tblContainer">
       <Box
@@ -95,7 +93,7 @@ const AdminPanel = () => {
             >
               <TableHead>
                 <TableRow className='tblRow'>
-                  <TableCell className='tblcel'>ID</TableCell>
+                  <TableCell className='tblcel idCel'>ID</TableCell>
                   <TableCell className='tblcel'>تصویر</TableCell>
                   <TableCell className='tblcel'>نام کالا</TableCell>
                   <TableCell className='tblcel'>دسته بندی</TableCell>
@@ -121,7 +119,7 @@ const AdminPanel = () => {
                   <>
                     {data?.data.map((record) => (
                       <TableRow key={record.id}>
-                        <TableCell className='tbodyOdd'>{record.id}</TableCell>
+                        <TableCell className='tbodyOdd idCel'>{record.id}</TableCell>
                         <TableCell className='tbodyEven'>
                           <img
                             src={BASE_URl + record.image}
@@ -137,8 +135,8 @@ const AdminPanel = () => {
                           >
                             <ModeEditOutlineIcon className='editIcon'/>
                           </IconButton>
-                          <IconButton onClick={() => DeletePost(record.id)}>
-                            <DeleteOutlineIcon className='deletIcon' />
+                          <IconButton>
+                            <DeleteOutlineIcon className='deletIcon' onClick={()=>{DeletePost(record?.id)}} />
                           </IconButton>
                           </Grid>
                         </TableCell>
@@ -171,7 +169,7 @@ const AdminPanel = () => {
       ) : (
         ''
       )}
-    </div>
+    </Grid>
   )
 }
 

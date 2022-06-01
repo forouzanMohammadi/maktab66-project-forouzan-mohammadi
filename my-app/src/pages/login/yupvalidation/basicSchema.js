@@ -1,8 +1,5 @@
 import * as Yup from 'yup'
 
-
-
-
 export const basicSchema = Yup.object().shape({
   username: Yup.string()
     .required('نام کاربری را وارد کنید')

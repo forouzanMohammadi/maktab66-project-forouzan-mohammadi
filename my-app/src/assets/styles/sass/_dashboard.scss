@@ -109,6 +109,11 @@
   margin-left: 90px !important;
   font-weight: bold !important;
 }
+.saveBtn{
+  background-color: rgba(80, 169, 132, 0.93) !important;
+  margin-left: 90px !important;
+  font-weight: bold !important;
+}
 .imageAdmin{
   width: 60px !important;
   height: 50px !important;
@@ -121,7 +126,7 @@
     margin: 0 !important;
     padding: 0 !important;
   }
-  .adminAddBtn{
+  .adminAddBtn, .saveBtn{
     padding: 0 !important;
     margin: 0 !important;
   }
@@ -138,6 +143,12 @@
   }
 }
 @media only screen and (max-width: 500px){
+  .adminTbl{
+    min-width: 200px !important;
+  }
+  .idCel{
+    display: none !important;
+  }
   .adminH5{
     display: none;
   }
@@ -159,6 +170,7 @@
   }
   .tbodyOdd,.tbodyEven {
     font-size: 12px !important;
+    padding:12px 0px !important;
   
   }
   .boxContainer{
@@ -170,25 +182,30 @@
   padding: 0px !important;
   margin: 0px !important;
   border: none !important;
+  min-width:30px !important;
   }
  }
  .editIcon, .deletIcon{
    font-size: 13px!important;
  }
+ .rdioBtn{
+   font-size: 12px !important;
+ }
 }
 @media only screen and (max-width: 376px){
   .boxContainer{
     width: 100vw !important;
+    gap: 1 !important;
  }
  .exit{
-  display: none !important;
+  display: none !important; 
 }
 .imageAdmin{
   width: 30px !important;
   height: 20px !important;
 }
-.tbodyOdd,.tbodyEven {
-  font-size: 10px !important;
-
+.tbodyOdd,.tbodyEven , .tblcel{
+  font-size: 13px !important;
+  padding:13px 0px !important;
 }
 }

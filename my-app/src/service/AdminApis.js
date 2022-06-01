@@ -13,7 +13,7 @@ AdminApis.put = function(id,selectedProduct){
     return this.instance.put(`${this.baseUrl}products/${id}`,selectedProduct)
 }
 AdminApis.patch = function(id,selectedProduct){
-    return this.instance.put(`${this.baseUrl}products/${id}`,selectedProduct)
+    return this.instance.patch(`${this.baseUrl}products/${id}`,selectedProduct)
 }
 AdminApis.unitProduct = function(id){
     return this.instance.get(`${this.baseUrl}products/${id}`)
