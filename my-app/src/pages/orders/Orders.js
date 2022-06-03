@@ -49,10 +49,8 @@ const Order = () => {
   
 
     if (e.target.value === "waiting") {
-      // setOrders(data?.data.filter((item) => item.orderStatus === 3));
       setStatus(3);
     } else if (e.target.value === "recived") {
-      // setOrders(data?.data.filter((item) => item.orderStatus === 6));
       setStatus(6);
     }
     getPosts()

@@ -6,7 +6,7 @@
       "categoryName": "کلاه بچگانه",
       "categoryId": "3",
       "description": "کلاه گرد لبه دار بچگانه از مدل های جدید کلاه آفتابی برای کودکان و مناسب استفاده روزمره، تفریح، مسافرت، طبیعت و همچنین یک کلاه لبه دار شیک برای عکاسی آتلیه کودک می باشد.",
-      "price": "145000",
+      "price": "1200",
       "count": "12",
       "image": "/files/50a2c142c4c87e1520c2a2e596270134",
       "images": [
@@ -1550,18 +1550,6 @@
       "image": "/files/f0069c9503b499ed769d195ca1dbe77b",
       "createdAt": 1652314443269,
       "id": 89
-    },
-    {
-      "name": "lumineaux",
-      "subCategoryId": "12",
-      "categoryName": "کلاه زنانه",
-      "categoryId": "1",
-      "price": "15,000",
-      "count": "2",
-      "image": "",
-      "images": "",
-      "createdAt": 1654190430685,
-      "id": 90
     }
   ],
   "categories": [
