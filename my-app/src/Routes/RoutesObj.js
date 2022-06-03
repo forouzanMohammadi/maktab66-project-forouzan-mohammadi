@@ -13,10 +13,20 @@ import Quantity from 'pages/quantity/Quantity';
 import Products from 'pages/products/Products';
 import Category from 'pages/products/Category';
 import SubCategory from 'pages/products/SubCategory';
+import NotFound from 'pages/notFound/NotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RoutesObj = [
   {
     pathname: '/',
+    name: 'Home Page',
+    isPrivate: false,
+    id: 'home',
+    element: <Home />,
+  },
+  {
+    pathname: '/home',
     name: 'Home Page',
     isPrivate: false,
     id: 'home',
@@ -113,10 +123,18 @@ const RoutesObj = [
     id: 'orders',
     element: <Orders />,
   },
+  {
+    pathname: '*',
+    name: 'NotFound',
+    isPrivate: false,
+    id: 'notFound',
+    element: <NotFound/>,
+  },
 ]
 export default function RouteApp() {
   return (
     <Router>
+      <ToastContainer/>
       <Routes>
         {RoutesObj.map((route) => {
           return (

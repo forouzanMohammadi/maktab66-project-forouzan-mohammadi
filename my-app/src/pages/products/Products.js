@@ -1,10 +1,9 @@
-import React, { useMemo, useState } from 'react'
-import { useFetch } from 'hooks/useFetch'
-import ProductsLayout from 'layouts/ProductsLayout'
-import { Link as LinkRoute } from 'react-router-dom'
+import React, { useMemo, useState } from 'react';
+import { useFetch } from 'hooks/useFetch';
+import ProductsLayout from 'layouts/ProductsLayout';
+import { Link} from 'react-router-dom';
 import {
   Grid,
-  Link,
   Card,
   CardActionArea,
   CardContent,
@@ -13,16 +12,16 @@ import {
   Pagination,
   CircularProgress,
   Box,
-} from '@mui/material'
+} from '@mui/material';
 
-const BASE_URl = 'http://localhost:3002'
+const BASE_URl = 'http://localhost:3002';
 
 function Products() {
-  const limit = useMemo(() => 6, [])
-  const [activePage, setActivePage] = useState(1)
+  const limit = useMemo(() => 6, []);
+  const [activePage, setActivePage] = useState(1);
   const { data, loading } = useFetch(
     `products?categoryId=3&categoryId=2&categoryId=1&_page=${activePage}&_limit=${limit}`,
-  )
+  );
 
   return (
     <div>
@@ -59,7 +58,7 @@ function Products() {
                 xs={12}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <LinkRoute className="linkDetail" to={`/product/${product.id}`}>
+                <Link className="linkDetail" to={`/product/${product.id}`}>
                   <Card className="card-home">
                     <CardActionArea>
                       <CardMedia
@@ -71,21 +70,28 @@ function Products() {
                         <Typography gutterBottom variant="h5" component="div">
                           {product.name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          <Link
+                        <Grid
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'space-around',
+                          }}
+                        >
+                          <Typography
                             variant="body1"
                             underline="none"
                             pl={5}
                             className="visit"
                           >
                             مشاهده
-                          </Link>
-                          {product.price + 'تومان'}
-                        </Typography>
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {product.price + ' تومان'}
+                          </Typography>
+                        </Grid>
                       </CardContent>
                     </CardActionArea>
                   </Card>
-                </LinkRoute>
+                </Link>
               </Grid>
             ))}
           </Grid>
@@ -104,6 +110,6 @@ function Products() {
       )}
     </div>
   )
-}
+};
 
 export default ProductsLayout(Products);

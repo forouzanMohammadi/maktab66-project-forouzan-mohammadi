@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { AdminApis } from 'service/AdminApis'
+import React, { useState, useEffect } from 'react';
+import { AdminApis } from 'service/AdminApis';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import {

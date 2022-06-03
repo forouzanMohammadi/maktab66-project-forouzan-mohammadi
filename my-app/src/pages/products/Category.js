@@ -1,11 +1,10 @@
-import React, { useMemo, useState, useEffect } from 'react'
-import { useFetch } from 'hooks/useFetch'
-import ProductsLayout from 'layouts/ProductsLayout'
-import { Link as LinkRoute, useParams } from 'react-router-dom'
-import { AdminApis } from 'service/AdminApis'
+import React, { useMemo, useState, useEffect } from 'react';
+import { useFetch } from 'hooks/useFetch';
+import ProductsLayout from 'layouts/ProductsLayout';
+import { Link, useParams } from 'react-router-dom';
+import { AdminApis } from 'service/AdminApis';
 import {
   Grid,
-  Link,
   Card,
   CardActionArea,
   CardContent,
@@ -14,28 +13,28 @@ import {
   Pagination,
   CircularProgress,
   Box,
-} from '@mui/material'
+} from '@mui/material';
 
 const BASE_URl = 'http://localhost:3002';
 
 function Category() {
-  let params = useParams()
-  let catId = parseInt(params.categoryId)
+  let params = useParams();
+  let catId = parseInt(params.categoryId);
 
-  const [cat, setCat] = useState({})
-  const limit = useMemo(() => 6, [])
-  const [activePage, setActivePage] = useState(1)
+  const [cat, setCat] = useState({});
+  const limit = useMemo(() => 6, []);
+  const [activePage, setActivePage] = useState(1);
   const { data, loading } = useFetch(
     `products?categoryId=${catId}&_page=${activePage}&_limit=${limit}`,
 
-  )
+  );
   useEffect(() => {
     ;(async () => {
       let response = await AdminApis.getProducts(`categories?id=${catId}`)
       setCat(response.data)
 
     })()
-  }, [catId])
+  }, [catId]);
 
   return (
     <div>
@@ -72,7 +71,7 @@ function Category() {
                 xs={12}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <LinkRoute className="linkDetail" to={`/product${product.id}`}>
+                <Link className="linkDetail" to={`/product${product.id}`}>
                   <Card className="card-home">
                     <CardActionArea>
                       <CardMedia
@@ -84,21 +83,23 @@ function Category() {
                         <Typography gutterBottom variant="h5" component="div">
                           {product.name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          <Link
+                        <Grid sx={{display:'flex', justifyContent:"space-around"}}>
+                          <Typography
                             variant="body1"
                             underline="none"
                             pl={5}
                             className="visit"
                           >
                             مشاهده
-                          </Link>
+                          </Typography>
+                        <Typography variant="body2" color="text.secondary">
                           {product.price + ' تومان'}
                         </Typography>
+                        </Grid>
                       </CardContent>
                     </CardActionArea>
                   </Card>
-                </LinkRoute>
+                </Link>
               </Grid>
             ))}
           </Grid>
@@ -117,6 +118,6 @@ function Category() {
       )}
     </div>
   )
-}
+};
 
-export default ProductsLayout(Category)
+export default ProductsLayout(Category);

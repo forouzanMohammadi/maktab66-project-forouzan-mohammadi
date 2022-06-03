@@ -3,18 +3,22 @@ import { useParams } from 'react-router-dom';
 import { AdminApis } from 'service/AdminApis';
 import UserLayout from 'layouts/UserLayout';
 import { Grid, Box, Button, Typography } from '@mui/material';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import AddIcon from '@mui/icons-material/Add';
+// import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+// import AddIcon from '@mui/icons-material/Add';
 import CircularProgress from '@mui/material/CircularProgress';
+import {useDispatch} from 'react-redux';
+import {addToCart} from 'redux/reducers/cartSlice';
+import { useNavigate} from 'react-router-dom'
 
 function DetailProduct() {
   const productId = useParams();
   let Id = parseInt(productId.id);
-  console.log(Id);
   const [product, setProduct] = useState(null);
   const [count, setCount] = useState(0);
   const [Index , setIndex]= useState(0);
-
+  const dispatch = useDispatch()
+  let navigate = useNavigate();
+ 
 
   useEffect(() => {
     ;(async () => {
@@ -42,11 +46,15 @@ function DetailProduct() {
       images[i].className = images[i].className.replace("active", "")
     }
     images[index].className="active"
-  }
+  };
+
+  const handleAddToCart = (product) =>{
+    dispatch(addToCart(product));
+    navigate('/basket');
+  };
 
 
-
-  const BASE_URl = 'http://localhost:3002'
+  const BASE_URl = 'http://localhost:3002';
 
   if(product === null){
     return <CircularProgress />
@@ -81,7 +89,7 @@ function DetailProduct() {
           <Typography className="dtail-price">
             {product.price + ' تومان'}
           </Typography>
-          <Grid className="detail-btns">
+          {/* <Grid className="detail-btns">
             <Button variant="text" color="error" onClick={handleIncrease}>
               <AddIcon />{' '}
             </Button>
@@ -89,8 +97,9 @@ function DetailProduct() {
             <Button variant="text" color="error" onClick={handleDecrease}>
               <DeleteOutlineIcon />
             </Button>
-          </Grid>
+          </Grid> */}
           <Button
+          onClick={()=> handleAddToCart(product)}
             disabled={product.count < count}
             className="addBasketBtn"
           >
@@ -100,6 +109,6 @@ function DetailProduct() {
       </Box>
     </Grid>
   )
-}
+};
 
 export default UserLayout(DetailProduct);

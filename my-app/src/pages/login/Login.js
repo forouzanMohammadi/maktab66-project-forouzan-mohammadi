@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { useFormik } from 'formik'
-import { useNavigate } from 'react-router-dom'
-import { AdminApis } from 'service/AdminApis'
-import { basicSchema } from '../login/yupvalidation/basicSchema'
-import { Link } from 'react-router-dom'
-import image from 'assets/images/Id card Customizable Flat Illustrations _ Rafiki Style.png'
+import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { AdminApis } from 'service/AdminApis';
+import { basicSchema } from '../login/yupvalidation/basicSchema';
+import { Link } from 'react-router-dom';
+import image from 'assets/images/Corporate illustration style.png';
 
 const Login = () => {
   const [user, setUserState] = useState({})
@@ -12,7 +12,7 @@ const Login = () => {
   const inputChangeHandler = (e) => {
     const _user = { ...user, [e.target.name]: e.target.value }
     setUserState(_user)
-  }
+  };
 
   const {
     values,
@@ -42,7 +42,7 @@ const Login = () => {
       }
    
     },
-  })
+  });
 
   return (
     <div className="form-body">
@@ -97,10 +97,10 @@ const Login = () => {
         </Link>
         </div>
         <div className='leftSide'>
-        <img src={image} className="imgLogin" />
+        <img src={image} className="imgLogin"  alt='login'/>
         </div>
       </div>
     </div>
   )
 }
-export default Login
+export default Login;

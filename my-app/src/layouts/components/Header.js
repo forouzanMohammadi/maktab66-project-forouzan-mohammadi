@@ -1,7 +1,7 @@
-import React from 'react'
-import { Box, Typography, Grid, Link} from '@mui/material'
+import React from 'react';
+import { Box, Typography, Grid, Link} from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles';
 
 const AppbarStyle = styled('div')(() => ({
   position: 'static',
@@ -12,8 +12,7 @@ const AppbarStyle = styled('div')(() => ({
   height: '10vh !important',
   direction: 'rtl',
   background: '#F24B4B',
-  // marginTop:'20px',
-}))
+}));
 
 function Header() {
 
@@ -47,6 +46,6 @@ function Header() {
       </Grid>
     </AppbarStyle>
   )
-}
+};
 
-export default Header
+export default Header;

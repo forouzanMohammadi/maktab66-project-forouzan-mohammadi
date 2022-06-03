@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { Grid } from '@mui/material'
-import { Link } from 'react-router-dom'
-import { AdminApis } from 'service/AdminApis'
+import React, { useState, useEffect } from 'react';
+import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { AdminApis } from 'service/AdminApis';
 
 
 export default function Sidebar() {
-  const [firstCat, setFirstCat] = useState({})
-  const [secondCat, setSecondCat] = useState({})
-  const [thirdCat, setThirdCat] = useState({})
-  const [subCat, setSubCat] = useState({})
+  const [firstCat, setFirstCat] = useState({});
+  const [secondCat, setSecondCat] = useState({});
+  const [thirdCat, setThirdCat] = useState({});
+  const [subCat, setSubCat] = useState({});
 
   useEffect(() => {
     ;(async () => {
-      let firstResponse = await AdminApis.getProducts('categories/1')
-      setFirstCat(firstResponse.data)
+      let firstResponse = await AdminApis.getProducts('categories/1');
+      setFirstCat(firstResponse.data);
 
-      let secondResponse = await AdminApis.getProducts('categories/2')
-      setSecondCat(secondResponse.data)
+      let secondResponse = await AdminApis.getProducts('categories/2');
+      setSecondCat(secondResponse.data);
 
-      let thirdResponse = await AdminApis.getProducts('categories/3')
-      setThirdCat(thirdResponse.data)
+      let thirdResponse = await AdminApis.getProducts('categories/3');
+      setThirdCat(thirdResponse.data);
 
-      let subResponse = await AdminApis.getProducts('subCategories')
-      setSubCat(subResponse.data)
+      let subResponse = await AdminApis.getProducts('subCategories');
+      setSubCat(subResponse.data);
     })()
-  }, [])
+  }, []);
 
 
   return (
@@ -106,4 +106,4 @@ export default function Sidebar() {
       </Grid>
     </Grid>
   )
-}
+};

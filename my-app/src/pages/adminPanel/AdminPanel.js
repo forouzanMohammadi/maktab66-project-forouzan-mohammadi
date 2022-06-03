@@ -10,33 +10,33 @@ import {
   TableHead,
   TableRow,
   Grid
-} from '@mui/material'
-import AdminLayout from 'layouts/AdminLayout'
-import { useMemo, useState } from 'react'
+} from '@mui/material';
+import AdminLayout from 'layouts/AdminLayout';
+import { useMemo, useState } from 'react';
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
-import { IconButton, Typography, Button } from '@mui/material'
+import { IconButton, Typography, Button } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import Modal from './Modal'
-import { AdminApis } from 'service/AdminApis'
+import Modal from './Modal';
+import { AdminApis } from 'service/AdminApis';
 // import Add from "components/Add";
-import { useFetch } from 'hooks/useFetch'
-const BASE_URl = 'http://localhost:3002'
+import { useFetch } from 'hooks/useFetch';
+const BASE_URl = 'http://localhost:3002';
 const delay = () => {
   return new Promise((resolve) => setTimeout(() => resolve('delay'), 3000))
-}
+};
 
 const AdminPanel = () => {
-  const limit = useMemo(() => 5, [])
-  const [activePage, setActivePage] = useState(1)
+  const limit = useMemo(() => 5, []);
+  const [activePage, setActivePage] = useState(1);
   const { data, loading, getPosts } = useFetch(
     `products?_page=${activePage}&_limit=${limit}`,
-  )
+  );
 
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
   const [inEditMode, setInEditMode] = useState({
     status: false,
     rowKey: null,
-  })
+  });
 
   const handleClickOpen = (id) => {
     setShowModal(true)
@@ -44,18 +44,17 @@ const AdminPanel = () => {
       status: true,
       rowKey: id,
     })
-  }
+  };
 
   const handleClose = () => {
     setShowModal(false)
-  }
+  };
 
   // deletePost
   const DeletePost = async(id) => {
     await AdminApis.delete(`${id}`)
-    console.log(id);
     getPosts()
-  }
+  };
 
   return (
     <Grid className='adminBody'>
@@ -124,6 +123,7 @@ const AdminPanel = () => {
                           <img
                             src={BASE_URl + record.image}
                             className="imageAdmin"
+                            alt={record.name}
                           />
                         </TableCell>
                         <TableCell className='tbodyOdd'>{record.name}</TableCell>
@@ -173,4 +173,4 @@ const AdminPanel = () => {
   )
 }
 
-export default AdminLayout(AdminPanel)
+export default AdminLayout(AdminPanel);

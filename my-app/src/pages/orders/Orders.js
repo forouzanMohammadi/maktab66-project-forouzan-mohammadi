@@ -10,22 +10,37 @@ import {
   TableHead,
   TableRow,
   Grid,
-} from '@mui/material'
-import { useFetch } from 'hooks/useFetch'
-import AdminLayout from 'layouts/AdminLayout'
-import { useMemo, useState } from 'react'
-import { Typography } from '@mui/material'
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormControl from '@mui/material/FormControl'
+  Button,
+} from '@mui/material';
+import { useFetch } from 'hooks/useFetch';
+import AdminLayout from 'layouts/AdminLayout';
+import { useMemo, useState } from 'react';
+import { Typography } from '@mui/material';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import ModalOrder from './ModalOrder'
+
+
+let moment = require('moment-jalaali')
 
 const Order = () => {
   const limit = useMemo(() => 5, [])
   const [activePage, setActivePage] = useState(1)
-  const { data, loading } = useFetch(
-    `products?_page=${activePage}&_limit=${limit}`,
+  const { data, loading, getPosts  } = useFetch(
+    `orders?_page=${activePage}&_limit=${limit}`,
   )
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClickOpen = (id) => {
+    setShowModal(true)
+  };
+
+  const handleClose = () => {
+    setShowModal(false)
+  };
+
 
   return (
     <Grid className="adminBody">
@@ -87,6 +102,7 @@ const Order = () => {
                   <TableCell className='tblcel'>نام کاربر</TableCell>
                   <TableCell className='tblcel'>مجموع مبلغ</TableCell>
                   <TableCell className='tblcel'>زمان ثبت سفارش</TableCell>
+                  <TableCell className='tblcel'></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody sx={{ position: 'relative' }}>
@@ -109,9 +125,14 @@ const Order = () => {
                     {data.data.map((record) => (
                       <TableRow key={record.id}>
                         <TableCell className='tbodyOdd idCel'>{record.id}</TableCell>
-                        <TableCell className='tbodyEven'>{record.name}</TableCell>
-                        <TableCell className='tbodyOdd'>{record.price}</TableCell>
-                        <TableCell className='tbodyEven'>{record.createdAt}</TableCell>
+                        <TableCell className='tbodyEven'>{record.customerDetail.firstName + " "}
+                        {record.customerDetail.lastName}
+                        </TableCell>
+                        <TableCell className='tbodyOdd'>{record.purchaseTotal}</TableCell>
+                        <TableCell className='tbodyEven'>{moment(record.orderDate).format("jYYYY/jM/jD")}</TableCell>
+                        <TableCell className='tbodyOdd'>
+                          <Button onClick={()=> handleClickOpen(record.id)}>بررسی سفارش</Button>
+                        </TableCell>
                       </TableRow>
                     ))}
                   </>
@@ -131,8 +152,17 @@ const Order = () => {
           />
         </Box>
       </Grid>
+      {showModal ? (
+        <ModalOrder
+          open={showModal}
+          handleClose={handleClose}
+          getPosts={getPosts}
+        />
+      ) : (
+        ''
+      )}
     </Grid>
   )
 }
 
-export default AdminLayout(Order)
+export default AdminLayout(Order);

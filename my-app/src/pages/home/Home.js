@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { AdminApis } from 'service/AdminApis'
-import UserLayout from 'layouts/UserLayout'
-import { Link as LinkRoute } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { AdminApis } from 'service/AdminApis';
+import UserLayout from 'layouts/UserLayout';
+import { Link} from 'react-router-dom';
 import {
   Grid,
-  Link,
   Card,
   CardActionArea,
   CardContent,
   Typography,
   CardMedia,
-} from '@mui/material'
-import Slider from './slider/Slider'
-import LinkCat from './LinkCat'
+} from '@mui/material';
+import Slider from './slider/Slider';
+import LinkCat from './LinkCat';
 
 function Home(props) {
-  const [babiesCat, setBabiesCat] = useState([])
-  const [womenCat, setWomenCat] = useState([])
-  const [menCat, setMenCat] = useState([])
+  const [babiesCat, setBabiesCat] = useState([]);
+  const [womenCat, setWomenCat] = useState([]);
+  const [menCat, setMenCat] = useState([]);
 
   useEffect(() => {
     ;(async () => {
@@ -30,9 +29,9 @@ function Home(props) {
       let resultMan = await AdminApis.getCtegory('?subCategoryId=12&_limit=6')
       setMenCat(resultMan.data)
     })()
-  }, [])
+  }, []);
 
-  const BASE_URl = 'http://localhost:3002'
+  const BASE_URl = 'http://localhost:3002';
   return (
     <>
       <Slider />
@@ -53,7 +52,7 @@ function Home(props) {
             xs={12}
             sx={{ display: 'flex', justifyContent: 'center' }}
           >
-            <LinkRoute className="linkDetail" to={`/product${product.id}`}>
+            <Link className="linkDetail" to={`/product${product.id}`}>
               <Card className="card-home">
                 <CardActionArea>
                   <CardMedia
@@ -65,21 +64,22 @@ function Home(props) {
                     <Typography gutterBottom variant="h5" component="div">
                       {product.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      <Link
+                    <Grid sx={{display:'flex', justifyContent:"space-around"}}>
+                      <Typography
                         variant="body1"
-                        underline="none"
                         pl={5}
                         className="visit"
                       >
                         مشاهده
-                      </Link>
-                      {product.price + 'تومان'}
+                      </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {product.price + ' تومان'}
                     </Typography>
+                    </Grid>
                   </CardContent>
                 </CardActionArea>
               </Card>
-            </LinkRoute>
+            </Link>
           </Grid>
         ))}
       </Grid>
@@ -99,7 +99,7 @@ function Home(props) {
             xs={12}
             sx={{ display: 'flex', justifyContent: 'center' }}
           >
-            <LinkRoute className="linkDetail" to={`/product${hat.id}`}>
+            <Link className="linkDetail" to={`/product${hat.id}`}>
               <Card className="card-home">
                 <CardActionArea>
                   <CardMedia
@@ -111,21 +111,23 @@ function Home(props) {
                     <Typography gutterBottom variant="h5" component="div">
                       {hat.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      <Link
+                    <Grid sx={{display:'flex', justifyContent:"space-around"}}>
+                      <Typography
                         variant="body1"
                         underline="none"
                         pl={5}
                         className="visit"
                       >
                         مشاهده
-                      </Link>
-                      {hat.price + 'تومان'}
+                      </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {hat.price + ' تومان'}
                     </Typography>
+                    </Grid>
                   </CardContent>
                 </CardActionArea>
               </Card>
-            </LinkRoute>
+            </Link>
           </Grid>
         ))}
       </Grid>
@@ -145,7 +147,7 @@ function Home(props) {
             xs={12}
             sx={{ display: 'flex', justifyContent: 'center' }}
           >
-            <LinkRoute className="linkDetail" to={`/product${hats.id}`}>
+            <Link className="linkDetail" to={`/product${hats.id}`}>
               <Card className="card-home">
                 <CardActionArea>
                   <CardMedia
@@ -157,25 +159,27 @@ function Home(props) {
                     <Typography gutterBottom variant="h5" component="div">
                       {hats.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      <Link
+                    <Grid sx={{display:'flex', justifyContent:"space-around"}}>
+                      <Typography
                         variant="body1"
                         underline="none"
                         pl={5}
                         className="visit"
                       >
                         مشاهده
-                      </Link>
-                      {hats.price + 'تومان'}
+                      </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {hats.price + ' تومان'}
                     </Typography>
+                    </Grid>
                   </CardContent>
                 </CardActionArea>
               </Card>
-            </LinkRoute>
+            </Link>
           </Grid>
         ))}
       </Grid>
     </>
   )
-}
-export default UserLayout(Home)
+};
+export default UserLayout(Home);

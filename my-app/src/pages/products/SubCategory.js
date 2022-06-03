@@ -1,11 +1,10 @@
 import React, { useMemo, useState, useEffect } from 'react'
 import { useFetch } from 'hooks/useFetch'
 import ProductsLayout from 'layouts/ProductsLayout'
-import { Link as LinkRoute, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { AdminApis } from 'service/AdminApis'
 import {
   Grid,
-  Link,
   Card,
   CardActionArea,
   CardContent,
@@ -71,7 +70,7 @@ function SubCategory() {
                   xs={12}
                   sx={{ display: 'flex', justifyContent: 'center' }}
                 >
-                  <LinkRoute className="linkDetail" to={`/product${product.id}`}>
+                  <Link className="linkDetail" to={`/product${product.id}`}>
                     <Card className="card-home">
                       <CardActionArea>
                         <CardMedia
@@ -83,21 +82,23 @@ function SubCategory() {
                           <Typography gutterBottom variant="h5" component="div">
                             {product.name}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            <Link
+                          <Grid sx={{display:'flex', justifyContent:"space-around"}}>
+                            <Typography
                               variant="body1"
                               underline="none"
                               pl={5}
                               className="visit"
                             >
                               مشاهده
-                            </Link>
+                            </Typography>
+                          <Typography variant="body2" color="text.secondary">
                             {product.price + ' تومان'}
                           </Typography>
+                          </Grid>
                         </CardContent>
                       </CardActionArea>
                     </Card>
-                  </LinkRoute>
+                  </Link>
                 </Grid>
               ))}
             </Grid>
@@ -116,6 +117,6 @@ function SubCategory() {
         )}
       </div>
     )
-  }
+  };
 
-export default ProductsLayout(SubCategory)
+export default ProductsLayout(SubCategory);

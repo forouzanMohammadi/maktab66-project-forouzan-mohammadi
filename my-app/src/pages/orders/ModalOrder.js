@@ -5,9 +5,10 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import ModalForm from './ModalForm';
+import ModalForm from '../adminPanel/ModalForm';
 
-export default function Modal({ open, handleClose,inEditMode,getPosts}) {
+export default function ModalOrder({ open, handleClose,inEditMode,getPosts}) {
+
   return (
     <div>
       <Dialog

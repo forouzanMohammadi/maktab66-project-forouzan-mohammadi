@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { AdminApis } from 'service/AdminApis'
+import React, { useState, useEffect } from 'react';
+import { AdminApis } from 'service/AdminApis';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import {
@@ -13,17 +13,17 @@ import {
 } from '@mui/material';
 
 function WomanCatDrawer() {
-  const [secondCat, setSecondCat] = useState({})
-  const [subCat, setSubCat] = useState({})
+  const [secondCat, setSecondCat] = useState({});
+  const [subCat, setSubCat] = useState({});
   const [isOpen, isSetOpen] = React.useState(false);
 
 
   useEffect(() => {
     ;(async () => {
-      let secondResponse = await AdminApis.getProducts('categories/2')
+      let secondResponse = await AdminApis.getProducts('categories/2');
       setSecondCat(secondResponse.data)
 
-      let subResponse = await AdminApis.getProducts('subCategories')
+      let subResponse = await AdminApis.getProducts('subCategories');
       setSubCat(subResponse.data)
     })()
   }, [])

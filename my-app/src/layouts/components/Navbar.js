@@ -16,6 +16,7 @@ import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStore
 import image from 'assets/images/thisLogo-removebg-preview.png';
 import iranSans from 'assets/fonts/iranSans/Sansa4fran3.woff';
 import SearchIcon from '@mui/icons-material/Search';
+import { useSelector } from 'react-redux';
 
 const myTheme = createTheme({
   typography: {
@@ -43,7 +44,7 @@ const AppbarStyle = styled('div')(() => ({
   background: '#F24B4B',
   backdropFilter: 'blur(16px) saturate(180%)',
   borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
-}))
+}));
 
 const Search = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -57,7 +58,7 @@ const Search = styled('div')(({ theme }) => ({
     marginLeft: theme.spacing(10),
     width: 'auto',
   },
-}))
+}));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -70,9 +71,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       width: '20ch',
     },
   },
-}))
+}));
 
 function Navbar() {
+  const {cartTotalQuantity} = useSelector(state => state.cart)
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -113,6 +115,7 @@ function Navbar() {
                   <LocalGroceryStoreOutlinedIcon className='iconNav' />
                 </Link>
               </Grid>
+                <Grid className="notificationBasket">{cartTotalQuantity}</Grid>
             </Grid>
           )}
         </Toolbar>

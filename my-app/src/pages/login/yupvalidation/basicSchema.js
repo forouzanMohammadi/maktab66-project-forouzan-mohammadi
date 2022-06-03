@@ -1,4 +1,4 @@
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 
 export const basicSchema = Yup.object().shape({
   username: Yup.string()
@@ -7,4 +7,4 @@ export const basicSchema = Yup.object().shape({
   password: Yup.string()
     .min(5,'رمز عبور باید 5 کاراکتر باشد')
     .required('رمز عبور را وارد کنید'),
-})
+});

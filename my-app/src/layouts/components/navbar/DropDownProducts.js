@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Menu, MenuItem, Link } from '@mui/material';
-import { AdminApis } from 'service/AdminApis'
+import { AdminApis } from 'service/AdminApis';
 
 function DropDownProducts() {
-  const [firstCat, setFirstCat] = useState({})
-  const [secondCat, setSecondCat] = useState({})
-  const [thirdCat, setThirdCat] = useState({})
-  const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
+  const [firstCat, setFirstCat] = useState({});
+  const [secondCat, setSecondCat] = useState({});
+  const [thirdCat, setThirdCat] = useState({});
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
   };
@@ -17,18 +17,18 @@ function DropDownProducts() {
 
 
   useEffect(() => {
-    ;(async () => {
-      let firstResponse = await AdminApis.getProducts('categories/1')
+    (async () => {
+      let firstResponse = await AdminApis.getProducts('categories/1');
       setFirstCat(firstResponse.data)
 
-      let secondResponse = await AdminApis.getProducts('categories/2')
+      let secondResponse = await AdminApis.getProducts('categories/2');
       setSecondCat(secondResponse.data)
 
-      let thirdResponse = await AdminApis.getProducts('categories/3')
+      let thirdResponse = await AdminApis.getProducts('categories/3');
       setThirdCat(thirdResponse.data)
 
     })()
-  }, [])
+  }, []);
 
   return (
     <>

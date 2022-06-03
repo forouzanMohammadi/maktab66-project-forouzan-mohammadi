@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { CKEditor } from '@ckeditor/ckeditor5-react'
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import React, { useEffect, useState } from 'react';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 // import { AdminApis } from 'service/AdminApis'
-import axios from 'axios'
+import axios from 'axios';
 
-const categories = ['کلاه مردانه', 'کلاه زنانه', 'کلاه بچه‌گانه']
+const categories = ['کلاه مردانه', 'کلاه زنانه', 'کلاه بچه‌گانه'];
 
 const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
-  const initialValues = {name:"",subCategoryId:"",categoryName:"",categoryId:"",price:"",count:"",image:"",images:""}
-  const [formValues, setFormValues]=useState(initialValues)
-  const [formErrors, setFormErrors]=useState({})
-  const [editData, setEditData] = useState(undefined)
-  const [value, setValue] = useState('')
-  const [isSubmit, setIsSubmit]= useState(false)
-
+  const initialValues = {name:"",subCategoryId:"",categoryName:"",categoryId:"",price:"",count:"",image:"",images:""};
+  const [formValues, setFormValues]=useState(initialValues);
+  const [formErrors, setFormErrors]=useState({});
+  const [editData, setEditData] = useState(undefined);
+  const [value, setValue] = useState('');
+  const [isSubmit, setIsSubmit]= useState(false);
+  console.log(isSubmit);
+  
   useEffect(() => {
     axios.get(`http://localhost:3002/products/${id}`).then((res) =>
       setTimeout(() => {
@@ -28,12 +29,38 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
         })
       }, 1000),
     )
-   
-  }, [])
+  }, []);
+
+  //onchange Gallary//
+  // const hanlergallary = async (e) => {
+  //   const files = Array.from(e.target.files);
+  //   preview(files[0]);
+  //   console.log(files);
+  //   let temp = [];
+  //   files.map((item) => {
+  //     const formData = new FormData();
+  //     formData.append("image", item);
+  //     const tempRequest = api.post("/upload", formData);
+  //     temp.push(tempRequest);
+  //   });
+
+  // };
+  // const arrayResponse = await Promise.all(temp);
+
+  // await api.put("/products/6", {
+  //   name: "update id 6",
+  //   brand: "lenovo",
+  //   image: arrayResponse.map((i) => i.data.filename),
+  //   price: 6000,
+  //   createdAt: new Date(),
+  //   isDelivered: false,
+  //   commentsId: 1
+  // });
+
   //onchange add product//
   const addHandelChange=(e)=>{
     setFormValues({...formValues,[e.target.name]:e.target.value})
-  }
+  };
 
   //onchange Edite//
   const handleChange = (e) => {
@@ -43,48 +70,48 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
       let files = e.target.files[0]
       setValue({ ...value, [e.target.name]: files })
     }
-  }
+  };
 
   const CkeditorHandler = (event, editor) => {
     console.log(editor.getData())
-    const data = editor.getData().replaceAll(/[<p></p>]/g, '')
+    const data = editor.getData().replaceAll(/[<span></span>]/g, '')
     console.log({ event, editor, data })
     setValue({ description: data })
-  }
+  };
 
-  let token = localStorage.getItem('token')
+  let token = localStorage.getItem('token');
 
   const submitEdit = async () => {
     await axios.patch(`http://localhost:3002/products/${editData.id}`, value, {
       headers: {
         token: token,
       },
-    })
+    });
     axios.get(`http://localhost:3002/products/${editData.id}`, value)
-  }
+  };
 
   const validate = (values)=>{
     const errors={}
-    if(!formValues.name){
+    if(!values.name){
       errors.name = "فیلد ضروری است"
     }else{}
-    if(!formValues.count){
+    if(!values.count){
       errors.count = "فیلد ضروری است"
     }else{}
-    if(!formValues.price){
+    if(!values.price){
       errors.price = "فیلد ضروری است"
     }else{}
-    if(!formValues.categoryName){
+    if(!values.categoryName){
       errors.categoryName = "فیلد ضروری است"
     }else{}
-    if(!formValues.subCategoryId){
+    if(!values.subCategoryId){
       errors.subCategoryId = "فیلد ضروری است"
     }else{}
-    if(!formValues.categoryId){
+    if(!values.categoryId){
       errors.categoryId = "فیلد ضروری است"
     }else{}
     return errors
-  }
+  };
 
   const submitAdd = async () => {
     await axios.post(`http://localhost:3002/products`,formValues, {
@@ -96,12 +123,12 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
     setFormErrors(validate(formValues));
     setIsSubmit(true);
 
-  }
+  };
 
  
-  let id = inEditMode.rowKey
+  let id = inEditMode.rowKey;
 
-  const BASE_URl = 'http://localhost:3002'
+  // const BASE_URl = 'http://localhost:3002';
 
   return (
     <>
@@ -115,7 +142,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
                 className="inputForm"
                 name="image"
                 type="file"
-                onChange={(e) => handleChange(e)}
+                // onChange={(e) => hanlergallary(e)}
               />
             </div>
           </div>
@@ -207,7 +234,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
                 value={formValues.name}
                 onChange={(e) => addHandelChange(e)}
               />
-            <p className='errorAdd'>{formErrors.name}</p>
+            <span className='errorAdd'>{formErrors.name}</span>
             </div>
             <div className="form-row">
               <label htmlFor="price">قیمت</label>
@@ -219,7 +246,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
                 value={formValues.price}
                 onChange={(e) => addHandelChange(e)}
               />
-            <p className='errorAdd'>{formErrors.price}</p>
+            <span className='errorAdd'>{formErrors.price}</span>
             </div>
           </div>
           <div className="form-main">
@@ -233,7 +260,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
                 value={formValues.count}
                 onChange={(e) => addHandelChange(e)}
               />
-            <p className='errorAdd'>{formErrors.count}</p>
+            <span className='errorAdd'>{formErrors.count}</span>
             </div>
             <div className="form-row">
               <label htmlFor="categoryName">دسته بندی</label>
@@ -247,7 +274,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
                   <option key={category}>{category}</option>
                 ))}
               </select>
-            <p className='errorAdd'>{formErrors.categoryName}</p>
+            <span className='errorAdd'>{formErrors.categoryName}</span>
             </div>
           </div>
           <div className="form-main">
@@ -263,7 +290,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
                 value={formValues.categoryId}
                 onChange={(e) => addHandelChange(e)}
               />
-            <p className='errorAdd'>{formErrors.categoryId}</p>
+            <span className='errorAdd'>{formErrors.categoryId}</span>
             </div>
             <div className="form-row">
               <label htmlFor="subCategoryId">شماره زیر‌دسته</label>
@@ -277,7 +304,7 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
                 value={formValues.subCategoryId}
                 onChange={(e) => addHandelChange(e)}
               />
-            <p className='errorAdd'>{formErrors.subCategoryId}</p>
+            <span className='errorAdd'>{formErrors.subCategoryId}</span>
             </div>
           </div>
           <div className="form-row">
@@ -297,4 +324,4 @@ const ModalForm = ({ inEditMode, handleClose, getPosts }) => {
   )
 }
 
-export default ModalForm
+export default ModalForm;
