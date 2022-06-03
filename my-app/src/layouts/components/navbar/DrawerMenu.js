@@ -84,6 +84,7 @@ function DrawerMenu() {
         onClose={() => setOpen(false)}
       >
         <List
+<<<<<<< HEAD:my-app/src/layouts/components/navbar/DrawerMenu.js
           sx={{
             width: '100%',
             marginTop: '50px',
@@ -115,6 +116,46 @@ function DrawerMenu() {
           <ListItemButton>
             <Link underline="none" color="black" href="/login">
               <ListItemText primary="پنل مدیریت" />
+=======
+      sx={{
+        width: '100%',
+        marginTop:'50px',
+        direction: 'rtl',
+      }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+    >
+      <ListItemButton>
+        <Link underline='none' color="black" href='/' >
+          <ListItemText primary="صفحه اصلی"/>
+        </Link>
+      </ListItemButton>
+      <Divider variant="middle" />
+      <ListItemButton onClick={handleClick}>
+        <Grid underline='none' color="black" href='/' >
+          <ListItemText primary="دسته‌بندی محصولات"/>
+        </Grid>
+        {isOpen ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Divider variant="middle" />
+      <Collapse in={isOpen} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton >
+            <Link underline='none' color="primary" >
+              <ListItemText primary="کلاه بچه‌گانه"/>
+            </Link>
+          </ListItemButton>
+          <Divider variant="middle" />
+          <ListItemButton >
+            <Link underline='none' color="primary" >
+              <ListItemText primary="کلاه زنانه" />
+            </Link>
+          </ListItemButton>
+          <Divider variant="middle" />
+          <ListItemButton >
+            <Link underline='none' color="primary">
+              <ListItemText primary="کلاه مردانه" />
+>>>>>>> feat/auth:my-app/src/layouts/components/DrawerMenu.js
             </Link>
           </ListItemButton>
           <Divider variant="middle" />
@@ -140,12 +181,18 @@ function DrawerMenu() {
             inputProps={{ 'aria-label': 'search' }}
           />
         </Search>
+<<<<<<< HEAD:my-app/src/layouts/components/navbar/DrawerMenu.js
         </Grid>
       )}
       <Grid>
       <LocalGroceryStoreOutlinedIcon className="iconNav" />
       </Grid>
       <IconButton sx={{ marginRight: 'auto' }} onClick={() => setOpen(!open)}>
+=======
+      )}
+      <IconButton sx={{ marginRight: 'auto' }} onClick={() => setOpen(!open)}>
+        <LocalGroceryStoreOutlinedIcon />
+>>>>>>> feat/auth:my-app/src/layouts/components/DrawerMenu.js
         <MenuIcon />
       </IconButton>
     </>

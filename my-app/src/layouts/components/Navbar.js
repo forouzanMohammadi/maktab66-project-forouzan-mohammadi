@@ -4,12 +4,17 @@ import DrawerMenu from 'layouts/components/navbar/DrawerMenu';
 import DropDownAdmin from 'layouts/components/navbar/DropDownAdmin';
 import {
   Grid,
+<<<<<<< HEAD
+=======
+  Tab,
+>>>>>>> feat/auth
   Toolbar,
   InputBase,
   CssBaseline,
   useTheme,
   useMediaQuery,
   Link,
+<<<<<<< HEAD
 } from '@mui/material';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
@@ -17,6 +22,14 @@ import image from 'assets/images/thisLogo-removebg-preview.png';
 import iranSans from 'assets/fonts/iranSans/Sansa4fran3.woff';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from 'react-redux';
+=======
+} from '@mui/material'
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
+import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined'
+import image from 'assets/images/theLogo.png'
+import iranSans from 'assets/fonts/iranSans/Sansa4fran3.woff'
+import SearchIcon from '@mui/icons-material/Search'
+>>>>>>> feat/auth
 
 const myTheme = createTheme({
   typography: {
@@ -41,7 +54,11 @@ const AppbarStyle = styled('div')(() => ({
   zIndex: '1000',
   direction: 'rtl',
   boxShadow: 'none',
+<<<<<<< HEAD
   background: '#F24B4B',
+=======
+  background: 'rgba(208, 170, 208, 0.55)',
+>>>>>>> feat/auth
   backdropFilter: 'blur(16px) saturate(180%)',
   borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
 }));
