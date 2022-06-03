@@ -20,7 +20,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import ModalOrder from './ModalOrder'
+import ModalOrders from './ModalOrders'
 
 
 let moment = require('moment-jalaali')
@@ -28,19 +28,35 @@ let moment = require('moment-jalaali')
 const Order = () => {
   const limit = useMemo(() => 5, [])
   const [activePage, setActivePage] = useState(1)
+  const [showModal, setShowModal] = useState(false);
+  const [status, setStatus] = useState(3);
   const { data, loading, getPosts  } = useFetch(
     `orders?_page=${activePage}&_limit=${limit}`,
   )
-  const [showModal, setShowModal] = useState(false);
 
+  const [inOrder, setInOrder] = useState({
+    rowKey: null,
+  });
   const handleClickOpen = (id) => {
-    setShowModal(true)
+    setShowModal(true);
+    setInOrder({rowKey: id});
   };
-
   const handleClose = () => {
-    setShowModal(false)
+    setShowModal(false);
   };
 
+  const hadleChange = (e) => {
+  
+
+    if (e.target.value === "waiting") {
+      // setOrders(data?.data.filter((item) => item.orderStatus === 3));
+      setStatus(3);
+    } else if (e.target.value === "recived") {
+      // setOrders(data?.data.filter((item) => item.orderStatus === 6));
+      setStatus(6);
+    }
+    getPosts()
+  };
 
   return (
     <Grid className="adminBody">
@@ -57,7 +73,8 @@ const Order = () => {
         </Typography>
         <>
           <FormControl>
-            <RadioGroup
+            <RadioGroup 
+            onChange={(e) => hadleChange(e)}
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
@@ -131,7 +148,7 @@ const Order = () => {
                         <TableCell className='tbodyOdd'>{record.purchaseTotal}</TableCell>
                         <TableCell className='tbodyEven'>{moment(record.orderDate).format("jYYYY/jM/jD")}</TableCell>
                         <TableCell className='tbodyOdd'>
-                          <Button onClick={()=> handleClickOpen(record.id)}>بررسی سفارش</Button>
+                          <Button onClick={() => handleClickOpen(record.id)}>بررسی سفارش</Button>
                         </TableCell>
                       </TableRow>
                     ))}
@@ -153,10 +170,12 @@ const Order = () => {
         </Box>
       </Grid>
       {showModal ? (
-        <ModalOrder
-          open={showModal}
-          handleClose={handleClose}
-          getPosts={getPosts}
+        <ModalOrders
+        open={showModal}
+        handleClose={handleClose}
+        getPosts={getPosts}
+        inOrder={inOrder}
+        status={status}
         />
       ) : (
         ''

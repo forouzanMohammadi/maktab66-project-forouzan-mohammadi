@@ -15,7 +15,7 @@ import { useFetch } from 'hooks/useFetch';
 import AdminLayout from 'layouts/AdminLayout';
 import { useMemo, useState } from 'react';
 import EasyEdit from 'react-easy-edit';
-import { Typography, Button } from '@mui/material';
+import { Typography} from '@mui/material';
 import axios from 'axios';
 
 const Quantity = () => {
