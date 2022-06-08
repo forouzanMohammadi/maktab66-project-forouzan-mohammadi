@@ -12,15 +12,15 @@ function ModalFormOrder({ handleClose, inOrder, status }) {
   });
 
   const handleStatus = async (data) => {
-    console.log(data?.data);
     await axios.patch(
       `http://localhost:3002/orders/${id}`,
       { ...data, orderStatus: 6 },
       { headers: { token: localStorage.getItem("token") } }
-    );
-    getPosts();
-    handleClose();
-  };
+      );
+      getPosts();
+      handleClose();
+    };
+    console.log(data?.data.customerDetail ,"now");
   return (
     <>
       {status === 3 ? (

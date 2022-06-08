@@ -1,20 +1,41 @@
-import { configureStore } from '@reduxjs/toolkit';
-import productReducer, { productsFetch } from './reducers/productSlice';
-import { productsAPi } from './reducers/productsApi';
-import cartReducer, {getTotals} from './reducers/cartSlice';
+import { configureStore } from '@reduxjs/toolkit'
+import cartReducer from 'redux/reducers/cartSlice';
 
+const loadPreloadState = () => {
+  try {
+    const serializedState = localStorage.getItem("state");
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (error) {
+    return undefined;
+  }
+};
 
+const saveState = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("state", serializedState);
+  } catch {
+    // ignore write errors
+  }
+};
 
 export const store = configureStore({
-  devTools: true,
+  devTools : true,
+  preloadedState: loadPreloadState(),
   reducer: {
-    products: productReducer,
-    cart: cartReducer,
-    [productsAPi.reducerPath]: productsAPi.reducer,
+    cart:cartReducer
+    
   },
-  middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(productsAPi.middleware),
- 
-});
+})
 
-store.dispatch(productsFetch());
-store.dispatch(getTotals());
+store.subscribe(()=>{
+  saveState({
+    cart: store.getState().cart,
+    // theme: store.getState().theme
+   })
+})
+
+// store.dispatch(getTotal())

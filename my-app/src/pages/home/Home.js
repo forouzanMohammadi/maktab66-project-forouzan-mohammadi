@@ -20,13 +20,13 @@ function Home(props) {
 
   useEffect(() => {
     ;(async () => {
-      let resultBaby = await AdminApis.getCtegory('?subCategoryId=5&_limit=6')
+      let resultBaby = await AdminApis.getCtegory('?sub_category_id=5&_limit=6')
       setBabiesCat(resultBaby.data)
 
-      let resultWoman = await AdminApis.getCtegory('?subCategoryId=8&_limit=6')
+      let resultWoman = await AdminApis.getCtegory('?sub_category_id=8&_limit=6')
       setWomenCat(resultWoman.data)
 
-      let resultMan = await AdminApis.getCtegory('?subCategoryId=12&_limit=6')
+      let resultMan = await AdminApis.getCtegory('?sub_category_id=12&_limit=6')
       setMenCat(resultMan.data)
     })()
   }, []);
@@ -57,7 +57,7 @@ function Home(props) {
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    src={BASE_URl + product.image}
+                    src={BASE_URl + product.images[0]}
                     alt="product's images"
                   />
                   <CardContent>
@@ -104,7 +104,7 @@ function Home(props) {
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    src={BASE_URl + hat.image}
+                    src={BASE_URl + hat.images[0]}
                     alt="product's images"
                   />
                   <CardContent>
@@ -152,7 +152,7 @@ function Home(props) {
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    src={BASE_URl + hats.image}
+                    src={BASE_URl + hats.images[0]}
                     alt="product's images"
                   />
                   <CardContent>

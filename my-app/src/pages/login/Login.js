@@ -5,6 +5,7 @@ import { AdminApis } from 'service/AdminApis';
 import { basicSchema } from '../login/yupvalidation/basicSchema';
 import { Link } from 'react-router-dom';
 import image from 'assets/images/Corporate illustration style.png';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [user, setUserState] = useState({})
@@ -38,7 +39,10 @@ const Login = () => {
         }
         
       } catch (error) {
-        alert("رمز عبور یا نام کاربری نادرست است.")
+        // alert("رمز عبور یا نام کاربری نادرست است.")
+        toast.error(`رمز عبور یا نام کاربری نادرست است.`, {
+          position: 'top-center',
+        })
       }
    
     },

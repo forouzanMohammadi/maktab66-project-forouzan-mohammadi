@@ -25,7 +25,7 @@ function Category() {
   const limit = useMemo(() => 6, []);
   const [activePage, setActivePage] = useState(1);
   const { data, loading } = useFetch(
-    `products?categoryId=${catId}&_page=${activePage}&_limit=${limit}`,
+    `products?category_id=${catId}&_page=${activePage}&_limit=${limit}`,
 
   );
   useEffect(() => {
@@ -76,7 +76,7 @@ function Category() {
                     <CardActionArea>
                       <CardMedia
                         component="img"
-                        src={BASE_URl + product.image}
+                        src={BASE_URl + product.images[0]}
                         alt={product.name}
                       />
                       <CardContent>

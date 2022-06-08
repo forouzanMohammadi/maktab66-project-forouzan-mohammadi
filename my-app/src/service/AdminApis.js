@@ -6,7 +6,7 @@ const AdminApis = new HttpService("/")
 AdminApis.delete = function(id){
     return this.instance.delete(`${this.baseUrl}products/${id}`)
 }
-AdminApis.update = function(formData){
+AdminApis.upload = function(formData){
     return this.instance.post(`${this.baseUrl}upload`,formData)
 }
 AdminApis.put = function(id,selectedProduct){
@@ -37,6 +37,13 @@ AdminApis.getProducts = function(url) {
 
 AdminApis.login = function (body){
     return this.instance.post(`${this.baseUrl}auth/login`,body)
+}
+
+AdminApis.postOrder=function(url,info) {
+    return this.instance.post(`${this.baseURL}${url}`,info)
+}
+AdminApis.orders = function(url) {
+    return this.instance.get(`${this.baseUrl}${url}`)
 }
 
 export {AdminApis}

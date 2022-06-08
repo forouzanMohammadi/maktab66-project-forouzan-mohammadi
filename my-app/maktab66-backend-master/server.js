@@ -17,6 +17,12 @@ const AUTH_JWT_OPTIONS = { expiresIn: 180 * 60 }
 const DB = JSON.parse(
   fs.readFileSync(path.join(__dirname, './db.json'), 'utf-8'),
 )
+server.use('/products', (req, res, next)=>{
+  if(req.method === 'DELETE'){
+  console.log('=========' , req.url.split('/') , '=================')
+  }
+  next()
+  })
 
 server.use(cors())
 
