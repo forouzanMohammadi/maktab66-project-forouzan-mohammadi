@@ -20,7 +20,7 @@ function Products() {
   const limit = useMemo(() => 6, []);
   const [activePage, setActivePage] = useState(1);
   const { data, loading } = useFetch(
-    `products?categoryId=3&categoryId=2&categoryId=1&_page=${activePage}&_limit=${limit}`,
+    `products?category_id=3&category_id=2&category_id=1&_page=${activePage}&_limit=${limit}`,
   );
 
   return (
@@ -63,7 +63,7 @@ function Products() {
                     <CardActionArea>
                       <CardMedia
                         component="img"
-                        src={BASE_URl + product.image}
+                        src={BASE_URl + product.images[0]}
                         alt={product.name}
                       />
                       <CardContent>

@@ -25,7 +25,7 @@ function SubCategory() {
     const limit = useMemo(() => 6, [])
     const [activePage, setActivePage] = useState(1)
     const { data, loading } = useFetch(
-      `products?subCategoryId=${catId}&_page=${activePage}&_limit=${limit}`,
+      `products?sub_category_id=${catId}&_page=${activePage}&_limit=${limit}`,
   
     )
     useEffect(() => {
@@ -75,7 +75,7 @@ function SubCategory() {
                       <CardActionArea>
                         <CardMedia
                           component="img"
-                          src={BASE_URl + product.image}
+                          src={BASE_URl + product.images[0]}
                           alt={product.name}
                         />
                         <CardContent>

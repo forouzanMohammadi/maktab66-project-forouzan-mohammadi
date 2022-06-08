@@ -108,7 +108,7 @@ const Quantity = () => {
                   </Box>
                 ) : (
                   <>
-                    {data.data.map((record) => (
+                    {data?.data.map((record) => (
                       <TableRow key={record.id}>
                         <TableCell className="tbodyOdd idCel">
                           {record.id}

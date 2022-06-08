@@ -3,14 +3,15 @@ import { useParams } from 'react-router-dom';
 import { AdminApis } from 'service/AdminApis';
 import UserLayout from 'layouts/UserLayout';
 import { Grid, Box, Button, Typography } from '@mui/material';
-// import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-// import AddIcon from '@mui/icons-material/Add';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import AddIcon from '@mui/icons-material/Add';
 import CircularProgress from '@mui/material/CircularProgress';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from 'redux/reducers/cartSlice';
 import { useNavigate} from 'react-router-dom'
 
 function DetailProduct() {
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const productId = useParams();
   let Id = parseInt(productId.id);
   const [product, setProduct] = useState(null);
@@ -19,23 +20,40 @@ function DetailProduct() {
   const dispatch = useDispatch()
   let navigate = useNavigate();
  
+  
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       let detailProduct = await AdminApis.getCtegory(`/${Id}`)
       setProduct(detailProduct.data)
     })()
   }, [Id]);
 
-  const handleIncrease = () => {
+  useEffect(() => {
+    const checkProduct = cartItems.find((item)=>+item.product?.id === +productId.id)
+    if(checkProduct){
+     setCount(checkProduct.inventory)
+    }else{
+      setCount(1)
+    }
+  }, []);
+  
+  const handleIncrease = (count) => {
     setCount(count + 1)
   };
 
-  const handleDecrease = () => {
+  const handleDecrease = (count) => {
     if (count > 0) {
       setCount(count - 1)
     }
   };
+
+ const totalItem = count* product?.price
+ const handleAddToCart = (product, count)=>{
+  const data = {product:{...product}, inventory:count, totalRow:totalItem}
+  dispatch(addToCart(data));
+    navigate('/basket');
+ }
 
   const myRef = useRef();
 
@@ -48,10 +66,7 @@ function DetailProduct() {
     images[index].className="active"
   };
 
-  const handleAddToCart = (product) =>{
-    dispatch(addToCart(product));
-    navigate('/basket');
-  };
+ 
 
 
   const BASE_URl = 'http://localhost:3002';
@@ -89,17 +104,17 @@ function DetailProduct() {
           <Typography className="dtail-price">
             {product.price + ' تومان'}
           </Typography>
-          {/* <Grid className="detail-btns">
-            <Button variant="text" color="error" onClick={handleIncrease}>
+          <Grid className="detail-btns">
+            <Button variant="text" color="error" onClick={()=>handleIncrease(count)}>
               <AddIcon />{' '}
             </Button>
             <Typography variant="h6">{count}</Typography>
-            <Button variant="text" color="error" onClick={handleDecrease}>
+            <Button variant="text" color="error" onClick={()=>handleDecrease(count)}>
               <DeleteOutlineIcon />
             </Button>
-          </Grid> */}
+          </Grid>
           <Button
-          onClick={()=> handleAddToCart(product)}
+          onClick={()=> handleAddToCart(product,count)}
             disabled={product.count < count}
             className="addBasketBtn"
           >

@@ -18,9 +18,9 @@ import { IconButton, Typography, Button } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Modal from './Modal';
 import { AdminApis } from 'service/AdminApis';
-// import Add from "components/Add";
 import { useFetch } from 'hooks/useFetch';
 const BASE_URl = 'http://localhost:3002';
+
 const delay = () => {
   return new Promise((resolve) => setTimeout(() => resolve('delay'), 3000))
 };
@@ -121,7 +121,7 @@ const AdminPanel = () => {
                         <TableCell className='tbodyOdd idCel'>{record.id}</TableCell>
                         <TableCell className='tbodyEven'>
                           <img
-                            src={BASE_URl + record.image}
+                            src={BASE_URl + record?.images[0]}
                             className="imageAdmin"
                             alt={record.name}
                           />

@@ -137,7 +137,7 @@ const Order = () => {
                   </Box>
                 ) : (
                   <>
-                    {data.data.map((record) => (
+                    {data?.data.map((record) => (
                       <TableRow key={record.id}>
                         <TableCell className='tbodyOdd idCel'>{record.id}</TableCell>
                         <TableCell className='tbodyEven'>{record.customerDetail.firstName + " "}
