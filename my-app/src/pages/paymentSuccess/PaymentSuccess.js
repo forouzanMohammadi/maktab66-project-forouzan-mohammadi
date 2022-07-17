@@ -33,6 +33,7 @@ function PaymentSuccess() {
       });
     }
   
+    localStorage.removeItem("clientInfo");
     localStorage.removeItem("cartItems");
     dispatch(removeRedux());
   }, []);

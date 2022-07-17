@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 const TableOrder = ({ data }) => {
-
+  console.log(data,"yeah");
   return (
     <>
       <Box
@@ -36,14 +36,14 @@ const TableOrder = ({ data }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.data?.map((item) => (
+            {data?.data?.cart?.cartItems.map((item) => (
               <TableRow key={item.id}>
                 {" "}
                 <TableCell>
-                  {item?.name} {item?.model}
+                  {item?.product.name}
                 </TableCell>
                 <TableCell>{item?.totalRow} تومان</TableCell>
-                <TableCell>{item?.orderCount}</TableCell>
+                <TableCell>{item?.inventory}</TableCell>
               </TableRow>
             ))}
           </TableBody>

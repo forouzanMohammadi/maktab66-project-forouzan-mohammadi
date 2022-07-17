@@ -1,4 +1,4 @@
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import React from "react";
 import TableOrder from "./TableOrder";
 import { Box } from "@mui/system";
@@ -31,8 +31,7 @@ function ModalFormOrder({ handleClose, inOrder, status }) {
               {data?.data.customerDetail.lastName}{" "}
             </Grid>
             <Grid xs={12}> آدرس: {data?.data.customerDetail.address} </Grid>
-            <Grid xs={12}> موبایل: {data?.data.customerDetail.mobile} </Grid>
-            <Grid xs={12}> استان : {data?.data.customerDetail.city} </Grid>
+            <Grid xs={12}> موبایل: {data?.data.customerDetail.cellPhone} </Grid>
             <Grid xs={12}>
               {" "}
               تاریخ تحویل :{" "}
@@ -58,8 +57,7 @@ function ModalFormOrder({ handleClose, inOrder, status }) {
               {data?.data.customerDetail.lastName}{" "}
             </Grid>
             <Grid xs={12}> آدرس: {data?.data.customerDetail.address} </Grid>
-            <Grid xs={12}> موبایل: {data?.data.customerDetail.mobile} </Grid>
-            <Grid xs={12}> استان : {data?.data.customerDetail.city} </Grid>
+            <Grid xs={12}> موبایل: {data?.data.customerDetail.cellPhone} </Grid>
             <Grid xs={12}>
               {" "}
               تاریخ تحویل :{" "}
