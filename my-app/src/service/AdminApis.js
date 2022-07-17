@@ -42,8 +42,8 @@ AdminApis.login = function (body){
 AdminApis.postOrder=function(url,info) {
     return this.instance.post(`${this.baseURL}${url}`,info)
 }
-AdminApis.orders = function(url) {
-    return this.instance.get(`${this.baseUrl}${url}`)
+AdminApis.orders = function(url,t) {
+    return this.instance.get(`${this.baseUrl}${url}`,t)
 }
 
 export {AdminApis}

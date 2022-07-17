@@ -42,7 +42,7 @@ const cartSlice = createSlice({
       )
 
       state.cartItems = nextCartItems
-      toast.error(`${action.payload.name} از سبد خرید حذف شد`, {
+      toast.error(`${action.payload.product.name} از سبد خرید حذف شد`, {
         position: 'bottom-left',
       })
       if (state.cartItems.length === 0) {
@@ -61,7 +61,7 @@ const cartSlice = createSlice({
           state.cartItems[itemIndex].product.price
         //update count
         state.count = state.cartItems[itemIndex].inventory
-        toast.info(`${action.payload.name} از سبد خرید کم شد`)
+        toast.info(`${action.payload.product.name} از سبد خرید کم شد`)
       } else {
         const nextCartItems = state.cartItems.filter(
           (cartItem) => cartItem.product.id !== action.payload.product.id,
@@ -69,7 +69,7 @@ const cartSlice = createSlice({
 
         state.cartItems = nextCartItems
 
-        toast.error(`${action.payload.name} از سبد خرید حذف شد`, {
+        toast.error(`${action.payload.product.name} از سبد خرید حذف شد`, {
           position: 'bottom-left',
         })
       }
